@@ -1,0 +1,24 @@
+{
+  "name": "nano-node-bandaid",
+  "version": "1.0.0",
+  "description": "nano-node-bandaid",
+  "scripts": {
+    "eslint": "eslint --fix 'scripts/**/*.js'",
+    "jsonlint": "jsonlint -q package.json;jsonlint -q scripts;jsonlint -q config.json;",
+    "preflight": "npm update;npm run npm-check-updates;npm outdated;npm i;npm audit fix;npm run eslint;npm run jsonlint;",
+    "start": "node -max-old-space-size=1700 scripts/convert-nano-to-banano.js"
+  },
+  "author": "Coranos",
+  "license": "MIT",
+  "dependencies": {
+    "@bananocoin/bananojs": "^2.4.24",
+    "node-fetch": "^2.6.1"
+  },
+  "preferGlobal": true,
+  "devDependencies": {
+    "@prantlf/jsonlint": "^10.2.0",
+    "eslint": "^7.30.0",
+    "eslint-config-google": "^0.14.0",
+    "npm-check-updates": "^12.0.2"
+  }
+}

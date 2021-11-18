@@ -1,0 +1,7 @@
+/node_modules/
+/screenlog.0
+.nyc_output
+/banano_build/
+/nano_build/
+/bandaid_build/
+config.json

@@ -1,0 +1,12 @@
+nano/core_test/node.cpp
+nano/core_test/prioritization.cpp
+nano/core_test/uint256_union.cpp
+nano/core_test/uint256_union.cpp
+nano/nano_node/entry.cpp
+nano/nano_node/entry.cpp
+nano/nano_node/entry.cpp
+nano/node/bootstrap/bootstrap_server.cpp
+nano/node/node.cpp
+nano/slow_test/node.cpp
+nano/rpc_test/rpc.cpp
+nano/lib/numbers.hpp
