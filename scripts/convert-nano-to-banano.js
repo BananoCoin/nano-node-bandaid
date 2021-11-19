@@ -39,11 +39,11 @@ const run = async () => {
 
   let genesisPublicKey = '2514452A978F08D1CF76BB40B6AD064183CF275D3CC5D3E0515DC96E2112AD4E';
 
-  let genesisAccount = 'ban_1bananobh5rat99qfgt1ptpieie5swmoth87thi74qgbfrij7dcgjiij94xr';
+  let genesisAccount = coinPrefixCamelCase.toLowerCase() + '_1bananobh5rat99qfgt1ptpieie5swmoth87thi74qgbfrij7dcgjiij94xr';
 
-  let canaryAccount = 'ban_3finchb9x33ype7r7495hoh9rs46hyb17sebogh7ghf6ar8zheiucm87mfha';
+  let canaryAccount = coinPrefixCamelCase.toLowerCase() + '_3finchb9x33ype7r7495hoh9rs46hyb17sebogh7ghf6ar8zheiucm87mfha';
 
-  let epochSignerAccount = 'bano_3qb6o6i1tkzr6jwr5s7eehfxwg9x6eemitdinbpi7u8bjjwsgqfj4wzser3x';
+  let epochSignerAccount = coinPrefixCamelCase.toLowerCase() + 'o_3qb6o6i1tkzr6jwr5s7eehfxwg9x6eemitdinbpi7u8bjjwsgqfj4wzser3x';
 
   let genesisBlockHash = 'F61A79F286ABC5CC01D3D09686F0567812B889A5C63ADE0E82DD30F3B2D96463';
 
