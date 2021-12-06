@@ -38,6 +38,8 @@ a utility for updating the nano code with the standard banano changes.
 
 4.  copy bandaid_build over banano_build
 
-5.  resume building banano from source 'make bananode'
+5. python3 record_rep_weights.py --rpc http://localhost:7072 ../rep_weights_live.bin
 
-6.  check in the new source code.
+6.  resume building banano from source 'make bananode'
+
+7.  check in the new source code.
