@@ -14,7 +14,7 @@ reset;
 check_type="BananoCoin_V24develop_vs_nanocurrency_v23_0"
 # check_type="nanocurrency_develop_edited_vs_nanocurrency_develop"
 # check_type="coranos_nullnode_edited_vs_nanocurrency_develop"
-check_type="local"
+#check_type="local"
 
 if [ $check_type = "BananoCoin_vs_nanocurrency_V22" ]
 then
