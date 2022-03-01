@@ -11,9 +11,10 @@ reset;
 # check_type="BananoCoin_vs_nanocurrency_develop"
 # check_type="coranos_vs_nanocurrency_V22"
 # check_type="BananoCoin_V23develop_vs_nanocurrency_develop"
-check_type="nanocurrency_develop_edited_vs_nanocurrency_develop"
+check_type="BananoCoin_V24develop_vs_nanocurrency_v23_0"
+# check_type="nanocurrency_develop_edited_vs_nanocurrency_develop"
 # check_type="coranos_nullnode_edited_vs_nanocurrency_develop"
-# check_type="local"
+check_type="local"
 
 if [ $check_type = "BananoCoin_vs_nanocurrency_V22" ]
 then
@@ -62,6 +63,14 @@ then
   git reset --hard bf22417a10a3cd770af66e9a3732775ca2d7f65d;
   cd ..;
   npm start;
+elif [ $check_type = "BananoCoin_V24develop_vs_nanocurrency_v23_0" ]
+then
+  echo "comparing BananoCoin V24develop vs nanocurrency v23.0"
+  # --depth 1 means clone with no history.
+  rm -rf banano_build;
+  rm -rf nano_build;
+  git clone --depth 1 --branch V24develop https://github.com/BananoCoin/banano.git banano_build;
+  git clone --depth 1 --branch V23.0 https://github.com/nanocurrency/nano-node.git nano_build;
 elif [ $check_type = "local" ]
 then
   echo "comparing local"
@@ -219,23 +228,22 @@ awk  'NR==534 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_build/nan
 mv bandaid_build/nano/core_test/toml.cpp.awk bandaid_build/nano/core_test/toml.cpp;
 
 #nano/core_test/uint256_union.cpp
-awk  'NR==102 || NR==105 { sub("340,282,366", "3,402,823,669") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
+awk  'NR==105 || NR==108 { sub("340,282,366", "3,402,823,669") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
 mv bandaid_build/nano/core_test/uint256_union.cpp.awk bandaid_build/nano/core_test/uint256_union.cpp;
 
-awk  'NR==103 { sub("340,282,366.920938463463374607431768211455", "3,402,823,669.20938463463374607431768211455") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
+awk  'NR==106 { sub("340,282,366.920938463463374607431768211455", "3,402,823,669.20938463463374607431768211455") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
 mv bandaid_build/nano/core_test/uint256_union.cpp.awk bandaid_build/nano/core_test/uint256_union.cpp;
 
-awk  'NR==106 { sub("340,282,366.920938463463374607431768211454", "3,402,823,669.20938463463374607431768211454") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
+awk  'NR==109 { sub("340,282,366.920938463463374607431768211454", "3,402,823,669.20938463463374607431768211454") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
 mv bandaid_build/nano/core_test/uint256_union.cpp.awk bandaid_build/nano/core_test/uint256_union.cpp;
 
-awk  'NR==371 || NR==384 || NR==402 { sub("xrb", "ban") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
+awk  'NR==374 || NR==387 || NR==405 { sub("xrb", "ban") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
 mv bandaid_build/nano/core_test/uint256_union.cpp.awk bandaid_build/nano/core_test/uint256_union.cpp;
 
-awk  'NR==372  { sub("nano", "ban") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
+awk  'NR==375  { sub("nano", "ban") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
 mv bandaid_build/nano/core_test/uint256_union.cpp.awk bandaid_build/nano/core_test/uint256_union.cpp;
 
-
-awk  'NR==386 || NR==404 { sub("\047x\047", "\047b\047") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
+awk  'NR==389 || NR==407 { sub("\047x\047", "\047b\047") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
 mv bandaid_build/nano/core_test/uint256_union.cpp.awk bandaid_build/nano/core_test/uint256_union.cpp;
 
 #nano/core_test/wallet.cpp
@@ -257,6 +265,17 @@ mv bandaid_build/nano/core_test/websocket.cpp.awk bandaid_build/nano/core_test/w
 #nano/ipc_flatbuffers_lib/flatbuffer_producer.hpp
 awk  'NR==13 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/ipc_flatbuffers_lib/flatbuffer_producer.hpp > bandaid_build/nano/ipc_flatbuffers_lib/flatbuffer_producer.hpp.awk
 mv bandaid_build/nano/ipc_flatbuffers_lib/flatbuffer_producer.hpp.awk bandaid_build/nano/ipc_flatbuffers_lib/flatbuffer_producer.hpp;
+
+#nano/lib/CMakeLists.txt
+awk 'NR==33 { print "  convert.cpp\n  convert.hpp" }; { print $0 }' bandaid_build/nano/lib/CMakeLists.txt > bandaid_build/nano/lib/CMakeLists.txt.awk
+mv bandaid_build/nano/lib/CMakeLists.txt.awk bandaid_build/nano/lib/CMakeLists.txt;
+
+#nano/lib/blocks.cpp
+awk 'NR==3 { print "#include <nano/lib/convert.hpp>" }; { print $0 }' bandaid_build/nano/lib/blocks.cpp > bandaid_build/nano/lib/blocks.cpp.awk
+mv bandaid_build/nano/lib/blocks.cpp.awk bandaid_build/nano/lib/blocks.cpp;
+
+awk 'NR==321 || NR==1201 { print "\ttree.put (\"balance_decimal\", convert_raw_to_dec (hashables.balance.to_string_dec ()));" }; { print $0 }' bandaid_build/nano/lib/blocks.cpp > bandaid_build/nano/lib/blocks.cpp.awk
+mv bandaid_build/nano/lib/blocks.cpp.awk bandaid_build/nano/lib/blocks.cpp;
 
 #nano/lib/blockbuilders.hpp
 awk  'NR==100 || NR==106 || NR==122 || NR==145 || NR==178 || NR==205 || NR==151 { sub("xrb", "ban") }; { print $0 }' bandaid_build/nano/lib/blockbuilders.hpp > bandaid_build/nano/lib/blockbuilders.hpp.awk
@@ -405,8 +424,26 @@ awk  'NR==308 || NR==324 { sub("ec.message ()", "ec.message () % connection->soc
 mv bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp;
 
 #nano/node/cli.cpp
-awk  'NR==701 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk
+awk 'NR==78 { print "\t(\"timestamps_import\", \"Imports a CSV file, overwriting the timestamps recorded in the database (warning: high resource usage).\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk
 mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
+
+awk 'NR==79 { print "\t(\"timestamps_export\", \"Writes a CSV file with the local timestamp recorded for each hash with timestamp in the database.\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
+mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
+
+awk 'NR==80 { print "\t(\"timestamps_update_frontiers\", \"Updates the \047modified\047 timestamp of each account chain with the stamps of each frontier\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
+mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
+
+awk  'NR==704 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
+mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
+
+sed -n '1,1312p' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.sed;
+sed -n '1313,1501p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+sed '1,1315d' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+mv bandaid_build/nano/node/cli.cpp.sed bandaid_build/nano/node/cli.cpp;
+
+#nano/node/election.cpp
+awk 'NR==196 { sub("node.network_params.network.is_dev_network \\(\\) \\? 500 : ","") }; { print $0 }' bandaid_build/nano/node/election.cpp > bandaid_build/nano/node/election.cpp.awk
+mv bandaid_build/nano/node/election.cpp.awk bandaid_build/nano/node/election.cpp;
 
 #nano/node/json_handler.hpp
 awk  'NR==77 || NR==78 { sub("Mxrb_ratio", "BAN_ratio") }; { print $0 }' bandaid_build/nano/node/json_handler.hpp > bandaid_build/nano/node/json_handler.hpp.awk
