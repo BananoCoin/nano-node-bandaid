@@ -107,11 +107,38 @@ cp banano_build/logo.png bandaid_build/logo.png;
 cp banano_build/Nano.ico bandaid_build/Nano.ico;
 cp banano_build/rep_weights_beta.bin bandaid_build/rep_weights_beta.bin;
 
-#### files that have been edited by banano
-## TODO: process this list.
-cp banano_build/nanocurrency.spec.in bandaid_build/nanocurrency.spec.in;
-cp banano_build/util/changelog.py bandaid_build/util/changelog.py;
-## end of list to process.
+#new code from banano
+cp banano_build/nano/lib/convert.cpp bandaid_build/nano/lib/convert.cpp;
+cp banano_build/nano/lib/convert.hpp bandaid_build/nano/lib/convert.hpp;
+
+#nanocurrency.spec.in
+awk  'NR==1 || NR==13 || NR==45 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
+awk  'NR==45 || NR==54 || NR==58 || NR==59 || NR==60 || NR==61 || NR==62 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
+awk  'NR==59 || NR==60 || NR==61 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
+awk  'NR==60 || NR==61 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
+awk  'NR==60 || NR==66 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
+awk  'NR==4 || NR==58 || NR==60 || NR==61 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
+awk  'NR==13 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
+#util/changelog.py
+awk  'NR==86 || NR==182 { sub("nanocurrency/nano-node", "BananoCoin/banano") }; { print $0 }' bandaid_build/util/changelog.py > bandaid_build/util/changelog.py.awk
+mv bandaid_build/util/changelog.py.awk bandaid_build/util/changelog.py;
+
+awk  'NR==184 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/util/changelog.py > bandaid_build/util/changelog.py.awk
+mv bandaid_build/util/changelog.py.awk bandaid_build/util/changelog.py;
 
 #CMakeLists.txt
 awk  'NR==53 { sub("Nano Currency", "Bananocoin") }; { print $0 }' bandaid_build/CMakeLists.txt > bandaid_build/CMakeLists.txt.awk
