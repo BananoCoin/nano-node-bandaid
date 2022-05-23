@@ -11,7 +11,8 @@ reset;
 # check_type="BananoCoin_vs_nanocurrency_develop"
 # check_type="coranos_vs_nanocurrency_V22"
 # check_type="BananoCoin_V23develop_vs_nanocurrency_develop"
-check_type="BananoCoin_V24develop_vs_nanocurrency_v23_0"
+# check_type="BananoCoin_V24develop_vs_nanocurrency_v23_0"
+check_type="BananoCoin_V23_1_vs_nanocurrency_v23_1"
 # check_type="nanocurrency_develop_edited_vs_nanocurrency_develop"
 # check_type="coranos_nullnode_edited_vs_nanocurrency_develop"
 # check_type="local"
@@ -71,6 +72,14 @@ then
   rm -rf nano_build;
   git clone --depth 1 --branch V24develop https://github.com/BananoCoin/banano.git banano_build;
   git clone --depth 1 --branch V23.0 https://github.com/nanocurrency/nano-node.git nano_build;
+elif [ $check_type = "BananoCoin_V23_1_vs_nanocurrency_v23_1" ]
+then
+  echo "comparing BananoCoin v23.1 vs nanocurrency v23.1"
+  # --depth 1 means clone with no history.
+  rm -rf banano_build;
+  rm -rf nano_build;
+  git clone --depth 1 --branch v23.1 https://github.com/BananoCoin/banano.git banano_build;
+  git clone --depth 1 --branch V23.1 https://github.com/nanocurrency/nano-node.git nano_build;
 elif [ $check_type = "local" ]
 then
   echo "comparing local"
@@ -731,7 +740,7 @@ mv bandaid_build/nano/node/logging.cpp.awk bandaid_build/nano/node/logging.cpp;
 awk  'NR==1 { print "#include <nano/lib/convert.hpp>" }; { print $0 }' bandaid_build/nano/node/node.cpp > bandaid_build/nano/node/node.cpp.awk
 mv bandaid_build/nano/node/node.cpp.awk bandaid_build/nano/node/node.cpp;
 
-awk  'NR==161 { print "\t\t\t\t\t\tevent.add (\"amount_decimal\", convert_raw_to_dec (amount_a.to_string_dec ()));" }; { print $0 }' bandaid_build/nano/node/node.cpp > bandaid_build/nano/node/node.cpp.awk
+awk  'NR==189 { print "\t\t\t\t\t\tevent.add (\"amount_decimal\", convert_raw_to_dec (amount_a.to_string_dec ()));" }; { print $0 }' bandaid_build/nano/node/node.cpp > bandaid_build/nano/node/node.cpp.awk
 mv bandaid_build/nano/node/node.cpp.awk bandaid_build/nano/node/node.cpp;
 
 awk  'NR==399 { sub("XRB", "BAN") }; { print $0 }' bandaid_build/nano/node/node.cpp > bandaid_build/nano/node/node.cpp.awk
