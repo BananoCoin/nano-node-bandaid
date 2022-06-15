@@ -12,9 +12,10 @@ reset;
 # check_type="coranos_vs_nanocurrency_V22"
 # check_type="BananoCoin_V23develop_vs_nanocurrency_develop"
 # check_type="BananoCoin_V24develop_vs_nanocurrency_v23_0"
-check_type="BananoCoin_V23_1_vs_nanocurrency_v23_1"
+# check_type="BananoCoin_V23_1_vs_nanocurrency_v23_1"
 # check_type="nanocurrency_develop_edited_vs_nanocurrency_develop"
 # check_type="coranos_nullnode_edited_vs_nanocurrency_develop"
+check_type="BananoCoin_V23_3_vs_nanocurrency_v23_3"
 # check_type="local"
 
 if [ $check_type = "BananoCoin_vs_nanocurrency_V22" ]
@@ -80,6 +81,14 @@ then
   rm -rf nano_build;
   git clone --depth 1 --branch v23.1 https://github.com/BananoCoin/banano.git banano_build;
   git clone --depth 1 --branch V23.1 https://github.com/nanocurrency/nano-node.git nano_build;
+elif [ $check_type = "BananoCoin_V23_3_vs_nanocurrency_v23_3" ]
+then
+  echo "comparing BananoCoin v23.3 vs nanocurrency v23.3"
+  # --depth 1 means clone with no history.
+  rm -rf banano_build;
+  rm -rf nano_build;
+  git clone --depth 1 --branch v23.3 https://github.com/BananoCoin/banano.git banano_build;
+  git clone --depth 1 --branch V23.3 https://github.com/nanocurrency/nano-node.git nano_build;
 elif [ $check_type = "local" ]
 then
   echo "comparing local"
@@ -165,7 +174,7 @@ mv bandaid_build/CMakeLists.txt.awk bandaid_build/CMakeLists.txt;
 awk  'NR==717 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/CMakeLists.txt > bandaid_build/CMakeLists.txt.awk
 mv bandaid_build/CMakeLists.txt.awk bandaid_build/CMakeLists.txt;
 
-awk  'NR==719 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_build/CMakeLists.txt > bandaid_build/CMakeLists.txt.awk
+awk  'NR==616 || NR==719 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_build/CMakeLists.txt > bandaid_build/CMakeLists.txt.awk
 mv bandaid_build/CMakeLists.txt.awk bandaid_build/CMakeLists.txt;
 
 awk  'NR==764 || NR==765 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/CMakeLists.txt > bandaid_build/CMakeLists.txt.awk
@@ -176,11 +185,11 @@ awk  'NR==3 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/api/flatbuffe
 mv bandaid_build/api/flatbuffers/nanoapi.fbs.awk bandaid_build/api/flatbuffers/nanoapi.fbs;
 
 #ci/actions/linux/deploy-docker.sh
-awk  'NR==31 || NR==48 || NR==49 || NR==50 || NR==54 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/actions/linux/deploy-docker.sh > bandaid_build/ci/actions/linux/deploy-docker.sh.awk
-mv bandaid_build/ci/actions/linux/deploy-docker.sh.awk bandaid_build/ci/actions/linux/deploy-docker.sh;
+awk  'NR==31 || NR==48 || NR==49 || NR==50 || NR==54 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/actions/linux/docker-deploy.sh > bandaid_build/ci/actions/linux/docker-deploy.sh.awk
+mv bandaid_build/ci/actions/linux/docker-deploy.sh.awk bandaid_build/ci/actions/linux/docker-deploy.sh;
 
 #ci/actions/linux/install_deps.sh
-awk  'NR==5 || NR==6 || NR==7 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/actions/linux/install_deps.sh > bandaid_build/ci/actions/linux/install_deps.sh.awk
+awk  'NR==5 || NR==6 || NR==7 || NR==9 || NR==10 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/actions/linux/install_deps.sh > bandaid_build/ci/actions/linux/install_deps.sh.awk
 mv bandaid_build/ci/actions/linux/install_deps.sh.awk bandaid_build/ci/actions/linux/install_deps.sh;
 
 #ci/build-centos.sh
@@ -432,10 +441,10 @@ awk  'NR==116 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/nano_n
 mv bandaid_build/nano/nano_node/daemon.cpp.awk bandaid_build/nano/nano_node/daemon.cpp;
 
 #nano/nano_node/entry.cpp
-awk  'NR==1906 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/nano_node/entry.cpp > bandaid_build/nano/nano_node/entry.cpp.awk
+awk  'NR==1905 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/nano_node/entry.cpp > bandaid_build/nano/nano_node/entry.cpp.awk
 mv bandaid_build/nano/nano_node/entry.cpp.awk bandaid_build/nano/nano_node/entry.cpp;
 
-awk  'NR==1906 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/nano_node/entry.cpp > bandaid_build/nano/nano_node/entry.cpp.awk
+awk  'NR==1905 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/nano_node/entry.cpp > bandaid_build/nano/nano_node/entry.cpp.awk
 mv bandaid_build/nano/nano_node/entry.cpp.awk bandaid_build/nano/nano_node/entry.cpp;
 
 #nano/nano_rpc/CMakeLists.txt
@@ -680,43 +689,43 @@ mv bandaid_build/nano/node/json_handler.cpp.sed bandaid_build/nano/node/json_han
 awk  'NR==3630 { print "\t\t\t\tweight_node.put (\"weight_decimal\", convert_raw_to_dec (account_weight.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==4363 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  'NR==4356 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==4493 { print "\t\tresponse_l.put (\"balance_decimal\", convert_raw_to_dec (balance.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  'NR==4486 { print "\t\tresponse_l.put (\"balance_decimal\", convert_raw_to_dec (balance.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==4495 { print "\t\tresponse_l.put (\"pending_decimal\", convert_raw_to_dec (pending.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  'NR==4488 { print "\t\tresponse_l.put (\"pending_decimal\", convert_raw_to_dec (pending.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==4497 { print "\t\tresponse_l.put (\"receivable_decimal\", convert_raw_to_dec (pending.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  'NR==4490 { print "\t\tresponse_l.put (\"receivable_decimal\", convert_raw_to_dec (pending.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==4527 { print "\t\t\t\tentry.put (\"balance_decimal\", convert_raw_to_dec (balance.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  'NR==4520 { print "\t\t\t\tentry.put (\"balance_decimal\", convert_raw_to_dec (balance.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==4529 { print "\t\t\t\tentry.put (\"pending_decimal\", convert_raw_to_dec (pending.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  'NR==4522 { print "\t\t\t\tentry.put (\"pending_decimal\", convert_raw_to_dec (pending.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==4531 { print "\t\t\t\tentry.put (\"receivable_decimal\", convert_raw_to_dec (pending.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  ' NR==4524 { print "\t\t\t\tentry.put (\"receivable_decimal\", convert_raw_to_dec (pending.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==4791 { print "\t\t\t\t\tentry.put (\"balance_decimal\", convert_raw_to_dec (balance));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  'NR==4784 { print "\t\t\t\t\tentry.put (\"balance_decimal\", convert_raw_to_dec (balance));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==4802 { print "\t\t\t\t\t\tentry.put (\"weight_decimal\", convert_raw_to_dec (account_weight.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  'NR==4795 { print "\t\t\t\t\t\tentry.put (\"weight_decimal\", convert_raw_to_dec (account_weight.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==4808 { print "\t\t\t\t\t\tentry.put (\"pending_decimal\", convert_raw_to_dec (account_pending.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  'NR==4801 { print "\t\t\t\t\t\tentry.put (\"pending_decimal\", convert_raw_to_dec (account_pending.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==4810 { print "\t\t\t\t\t\tentry.put (\"receivable_decimal\", convert_raw_to_dec (account_pending.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  'NR==4803 { print "\t\t\t\t\t\tentry.put (\"receivable_decimal\", convert_raw_to_dec (account_pending.convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==4873 { print "\t\t\t\t\t\t\t\tpending_tree.put (\"amount_decimal\", convert_raw_to_dec (info.amount.number ().convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  'NR==4866 { print "\t\t\t\t\t\t\t\tpending_tree.put (\"amount_decimal\", convert_raw_to_dec (info.amount.number ().convert_to<std::string> ()));" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
-awk  'NR==5399 { print "\tno_arg_funcs.emplace (\"raw_to_dec\", &nano::json_handler::raw_to_dec);" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
+awk  'NR==5392 { print "\tno_arg_funcs.emplace (\"raw_to_dec\", &nano::json_handler::raw_to_dec);" }; { print $0 }' bandaid_build/nano/node/json_handler.cpp > bandaid_build/nano/node/json_handler.cpp.awk
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
 #nano/node/json_handler.hpp
@@ -740,7 +749,7 @@ mv bandaid_build/nano/node/logging.cpp.awk bandaid_build/nano/node/logging.cpp;
 awk  'NR==1 { print "#include <nano/lib/convert.hpp>" }; { print $0 }' bandaid_build/nano/node/node.cpp > bandaid_build/nano/node/node.cpp.awk
 mv bandaid_build/nano/node/node.cpp.awk bandaid_build/nano/node/node.cpp;
 
-awk  'NR==189 { print "\t\t\t\t\t\tevent.add (\"amount_decimal\", convert_raw_to_dec (amount_a.to_string_dec ()));" }; { print $0 }' bandaid_build/nano/node/node.cpp > bandaid_build/nano/node/node.cpp.awk
+awk  'NR==190 { print "\t\t\t\t\t\tevent.add (\"amount_decimal\", convert_raw_to_dec (amount_a.to_string_dec ()));" }; { print $0 }' bandaid_build/nano/node/node.cpp > bandaid_build/nano/node/node.cpp.awk
 mv bandaid_build/nano/node/node.cpp.awk bandaid_build/nano/node/node.cpp;
 
 awk  'NR==399 { sub("XRB", "BAN") }; { print $0 }' bandaid_build/nano/node/node.cpp > bandaid_build/nano/node/node.cpp.awk
