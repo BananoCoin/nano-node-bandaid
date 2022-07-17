@@ -15,7 +15,8 @@ reset;
 # check_type="BananoCoin_V23_1_vs_nanocurrency_v23_1"
 # check_type="nanocurrency_develop_edited_vs_nanocurrency_develop"
 # check_type="coranos_nullnode_edited_vs_nanocurrency_develop"
-check_type="BananoCoin_V23_3_vs_nanocurrency_v23_3"
+# check_type="BananoCoin_V23_3_vs_nanocurrency_v23_3"
+check_type="BananoCoin_v23_3timestamp_3_vs_nanocurrency_v23_3"
 # check_type="local"
 
 if [ $check_type = "BananoCoin_vs_nanocurrency_V22" ]
@@ -27,67 +28,19 @@ then
   git clone --branch V22.1 https://github.com/nanocurrency/nano-node.git nano_build;
 elif [ $check_type = "BananoCoin_vs_nanocurrency_develop" ]
 then
-  echo "comparing BananoCoin V22dev2 vs nanocurrency develop"
-  rm -rf banano_build;
-  rm -rf nano_build;
-  git clone --branch V22dev2 https://github.com/BananoCoin/banano.git banano_build;
-  git clone --branch develop https://github.com/nanocurrency/nano-node.git nano_build;
-elif [ $check_type = "coranos_vs_nanocurrency_V22" ]
-then
-  echo "comparing coranos V22dev2 vs nanocurrency V22.1"
-  rm -rf banano_build;
-  rm -rf nano_build;
-  git clone --branch V22dev2 https://github.com/coranos/banano.git banano_build;
-  git clone --branch V22.1 https://github.com/nanocurrency/nano-node.git nano_build;
-elif [ $check_type = "BananoCoin_V23develop_vs_nanocurrency_develop" ]
-then
-  echo "comparing BananoCoin V23develop vs nanocurrency develop"
-  rm -rf banano_build;
-  rm -rf nano_build;
-  git clone --branch V23develop https://github.com/BananoCoin/banano.git banano_build;
-  git clone --branch develop https://github.com/nanocurrency/nano-node.git nano_build;
-elif [ $check_type = "nanocurrency_develop_edited_vs_nanocurrency_develop" ]
-then
   echo "comparing nanocurrency develop edited vs nanocurrency develop"
   rm -rf banano_build;
   rm -rf nano_build;
   git clone --branch develop https://github.com/nanocurrency/nano-node.git banano_build;
   git clone --branch develop https://github.com/nanocurrency/nano-node.git nano_build;
   npm start;
-elif [ $check_type = "coranos_nullnode_edited_vs_nanocurrency_develop" ]
+elif [ $check_type = "BananoCoin_v23_3timestamp_3_vs_nanocurrency_v23_3" ]
 then
-  echo "comparing coranos nullnode edited vs nanocurrency develop"
-  rm -rf banano_build;
-  rm -rf nano_build;
-  git clone --branch develop https://github.com/coranos/nulnode.git nulano_build;
-  git clone --branch develop https://github.com/nanocurrency/nano-node.git nano_build;
-  cd nano_build;
-  git reset --hard bf22417a10a3cd770af66e9a3732775ca2d7f65d;
-  cd ..;
-  npm start;
-elif [ $check_type = "BananoCoin_V24develop_vs_nanocurrency_v23_0" ]
-then
-  echo "comparing BananoCoin V24develop vs nanocurrency v23.0"
+  echo "comparing BananoCoin v23.3timestamp vs nanocurrency v23.3"
   # --depth 1 means clone with no history.
   rm -rf banano_build;
   rm -rf nano_build;
-  git clone --depth 1 --branch V24develop https://github.com/BananoCoin/banano.git banano_build;
-  git clone --depth 1 --branch V23.0 https://github.com/nanocurrency/nano-node.git nano_build;
-elif [ $check_type = "BananoCoin_V23_1_vs_nanocurrency_v23_1" ]
-then
-  echo "comparing BananoCoin v23.1 vs nanocurrency v23.1"
-  # --depth 1 means clone with no history.
-  rm -rf banano_build;
-  rm -rf nano_build;
-  git clone --depth 1 --branch v23.1 https://github.com/BananoCoin/banano.git banano_build;
-  git clone --depth 1 --branch V23.1 https://github.com/nanocurrency/nano-node.git nano_build;
-elif [ $check_type = "BananoCoin_V23_3_vs_nanocurrency_v23_3" ]
-then
-  echo "comparing BananoCoin v23.3 vs nanocurrency v23.3"
-  # --depth 1 means clone with no history.
-  rm -rf banano_build;
-  rm -rf nano_build;
-  git clone --depth 1 --branch v23.3 https://github.com/BananoCoin/banano.git banano_build;
+  git clone --depth 1 --branch v23.3timestamp https://github.com/BananoCoin/banano.git banano_build;
   git clone --depth 1 --branch V23.3 https://github.com/nanocurrency/nano-node.git nano_build;
 elif [ $check_type = "local" ]
 then
@@ -171,7 +124,7 @@ mv bandaid_build/CMakeLists.txt.awk bandaid_build/CMakeLists.txt;
 awk  'NR==177 || NR==179 || NR==190 || NR==192 || NR==203 || NR==205 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/CMakeLists.txt > bandaid_build/CMakeLists.txt.awk
 mv bandaid_build/CMakeLists.txt.awk bandaid_build/CMakeLists.txt;
 
-awk  'NR==717 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/CMakeLists.txt > bandaid_build/CMakeLists.txt.awk
+awk  'NR==616 || NR==717 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/CMakeLists.txt > bandaid_build/CMakeLists.txt.awk
 mv bandaid_build/CMakeLists.txt.awk bandaid_build/CMakeLists.txt;
 
 awk  'NR==616 || NR==719 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_build/CMakeLists.txt > bandaid_build/CMakeLists.txt.awk
@@ -191,6 +144,18 @@ mv bandaid_build/ci/actions/linux/docker-deploy.sh.awk bandaid_build/ci/actions/
 #ci/actions/linux/install_deps.sh
 awk  'NR==5 || NR==6 || NR==7 || NR==9 || NR==10 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/actions/linux/install_deps.sh > bandaid_build/ci/actions/linux/install_deps.sh.awk
 mv bandaid_build/ci/actions/linux/install_deps.sh.awk bandaid_build/ci/actions/linux/install_deps.sh;
+
+#ci/actions/linux/docker-impl/docker-common.sh
+awk  'NR==36 { sub("\\$\\{GITHUB_REPOSITORY\\}", "bananocoin") }; { print $0 }' bandaid_build/ci/actions/linux/docker-impl/docker-common.sh > bandaid_build/ci/actions/linux/docker-impl/docker-common.sh.awk
+mv bandaid_build/ci/actions/linux/docker-impl/docker-common.sh.awk bandaid_build/ci/actions/linux/docker-impl/docker-common.sh;
+
+# ci/build-docker-image.sh
+awk  'NR==11 || NR==19 { sub("\\$\\{GITHUB_REPOSITORY\\}", "bananocoin") }; { print $0 }' bandaid_build/ci/build-docker-image.sh > bandaid_build/ci/build-docker-image.sh.awk
+mv bandaid_build/ci/build-docker-image.sh.awk bandaid_build/ci/build-docker-image.sh;
+
+#ci/actions/linux/ghcr_push.sh
+awk  'NR==6 || NR==7 || NR==8 { sub("\\$\\{GITHUB_REPOSITORY\\}", "bananocoin") }; { print $0 }' bandaid_build/ci/actions/linux/ghcr_push.sh > bandaid_build/ci/actions/linux/ghcr_push.sh.awk
+mv bandaid_build/ci/actions/linux/ghcr_push.sh.awk bandaid_build/ci/actions/linux/ghcr_push.sh;
 
 #ci/build-centos.sh
 awk  'NR==13 || NR==14 || NR==18 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/build-centos.sh > bandaid_build/ci/build-centos.sh.awk
@@ -482,7 +447,7 @@ awk  'NR==704 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/node/c
 mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
 
 sed -n '1,1312p' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.sed;
-sed -n '1313,1501p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+sed -n '1313,1535p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 sed '1,1315d' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 mv bandaid_build/nano/node/cli.cpp.sed bandaid_build/nano/node/cli.cpp;
 
