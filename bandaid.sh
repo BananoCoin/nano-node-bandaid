@@ -17,6 +17,7 @@ reset;
 # check_type="coranos_nullnode_edited_vs_nanocurrency_develop"
 # check_type="BananoCoin_V23_3_vs_nanocurrency_v23_3"
 check_type="BananoCoin_v23_3timestamp_3_vs_nanocurrency_v23_3"
+# check_type="BananoCoin_master_vs_nanocurrency_v23_3"
 # check_type="local"
 
 if [ $check_type = "BananoCoin_vs_nanocurrency_V22" ]
@@ -41,6 +42,14 @@ then
   rm -rf banano_build;
   rm -rf nano_build;
   git clone --depth 1 --branch v23.3timestamp https://github.com/BananoCoin/banano.git banano_build;
+  git clone --depth 1 --branch V23.3 https://github.com/nanocurrency/nano-node.git nano_build;
+elif [ $check_type = "BananoCoin_master_vs_nanocurrency_v23_3" ]
+then
+  echo "comparing BananoCoin master vs nanocurrency v23.3"
+  # --depth 1 means clone with no history.
+  rm -rf banano_build;
+  rm -rf nano_build;
+  git clone --depth 1 --branch master https://github.com/BananoCoin/banano.git banano_build;
   git clone --depth 1 --branch V23.3 https://github.com/nanocurrency/nano-node.git nano_build;
 elif [ $check_type = "local" ]
 then
