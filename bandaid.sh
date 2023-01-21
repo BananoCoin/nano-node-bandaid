@@ -8,8 +8,8 @@ reset;
 # https://github.com/nanocurrency/nano-node/compare/V22.1...BananoCoin:V22dev2
 # https://github.com/BananoCoin/banano/compare/V23develop...nanocurrency:develop
 
-check_type=BananoCoin_v24_vs_nanocurrency_v24
-# check_type="local"
+# check_type=BananoCoin_v24_vs_nanocurrency_v24
+check_type="local"
 
 if [ $check_type = "BananoCoin_v24_vs_nanocurrency_v24" ]
 then
@@ -119,7 +119,7 @@ awk  'NR==31 || NR==48 || NR==49 || NR==50 || NR==54 { sub("nanocurrency", "bana
 mv bandaid_build/ci/actions/linux/docker-deploy.sh.awk bandaid_build/ci/actions/linux/docker-deploy.sh;
 
 #ci/actions/linux/install_deps.sh
-awk  'NR==5 || NR==6 || NR==7 || NR==9 || NR==10 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/actions/linux/install_deps.sh > bandaid_build/ci/actions/linux/install_deps.sh.awk
+awk  'NR==5 || NR==6 || NR==7 || NR==9 || NR==12 || NR==10 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/actions/linux/install_deps.sh > bandaid_build/ci/actions/linux/install_deps.sh.awk
 mv bandaid_build/ci/actions/linux/install_deps.sh.awk bandaid_build/ci/actions/linux/install_deps.sh;
 
 #ci/actions/linux/docker-impl/docker-common.sh
