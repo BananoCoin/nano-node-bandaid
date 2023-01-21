@@ -204,10 +204,10 @@ awk  'NR==75 { sub("0x52", "0x42") }; { print $0 }' bandaid_build/nano/core_test
 mv bandaid_build/nano/core_test/message.cpp.awk bandaid_build/nano/core_test/message.cpp;
 
 #nano/core_test/toml.cpp
-awk  'NR==416 { sub("nano_3arg3asgtigae3xckabaaewkx3bzsh7nwz7jkmjos79ihyaxwphhm6qgjps4", "bano_3arg3asgtigae3xckabaaewkx3bzsh7nwz7jkmjos79ihyaxwphhm6qgjps4") }; { print $0 }' bandaid_build/nano/core_test/toml.cpp > bandaid_build/nano/core_test/toml.cpp.awk
+awk  'NR==421 { sub("nano_3arg3asgtigae3xckabaaewkx3bzsh7nwz7jkmjos79ihyaxwphhm6qgjps4", "bano_3arg3asgtigae3xckabaaewkx3bzsh7nwz7jkmjos79ihyaxwphhm6qgjps4") }; { print $0 }' bandaid_build/nano/core_test/toml.cpp > bandaid_build/nano/core_test/toml.cpp.awk
 mv bandaid_build/nano/core_test/toml.cpp.awk bandaid_build/nano/core_test/toml.cpp;
 
-awk  'NR==534 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_build/nano/core_test/toml.cpp > bandaid_build/nano/core_test/toml.cpp.awk
+awk  'NR==539 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_build/nano/core_test/toml.cpp > bandaid_build/nano/core_test/toml.cpp.awk
 mv bandaid_build/nano/core_test/toml.cpp.awk bandaid_build/nano/core_test/toml.cpp;
 
 #nano/core_test/uint256_union.cpp
@@ -220,13 +220,13 @@ mv bandaid_build/nano/core_test/uint256_union.cpp.awk bandaid_build/nano/core_te
 awk  'NR==109 { sub("340,282,366.920938463463374607431768211454", "3,402,823,669.20938463463374607431768211454") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
 mv bandaid_build/nano/core_test/uint256_union.cpp.awk bandaid_build/nano/core_test/uint256_union.cpp;
 
-awk  'NR==374 || NR==387 || NR==405 { sub("xrb", "ban") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
+awk  'NR==374 || NR==401|| NR==419 || NR==405 { sub("xrb", "ban") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
 mv bandaid_build/nano/core_test/uint256_union.cpp.awk bandaid_build/nano/core_test/uint256_union.cpp;
 
 awk  'NR==375  { sub("nano", "ban") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
 mv bandaid_build/nano/core_test/uint256_union.cpp.awk bandaid_build/nano/core_test/uint256_union.cpp;
 
-awk  'NR==389 || NR==407 { sub("\047x\047", "\047b\047") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
+awk  'NR==403 || NR==421 { sub("\047x\047", "\047b\047") }; { print $0 }' bandaid_build/nano/core_test/uint256_union.cpp > bandaid_build/nano/core_test/uint256_union.cpp.awk
 mv bandaid_build/nano/core_test/uint256_union.cpp.awk bandaid_build/nano/core_test/uint256_union.cpp;
 
 #nano/core_test/wallet.cpp
