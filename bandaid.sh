@@ -320,6 +320,10 @@ mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 awk  'NR==222 { sub("7078", "7074") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
+awk  'NR==270 || NR==316 || NR==320 || NR==324 || NR==328 || NR==346 || NR==350 || NR==354 || NR==358 { sub("nano_", "banano_") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
+
+
 #nano/lib/numbers.cpp
 # note: includes strange codes to use a single quote in an awk pattern.
 awk  'NR==54 { sub("destination_a.append \\(\"_onan\"\\); // nano_", "destination_a.append (\"_nab\");") }; { print $0 }' bandaid_build/nano/lib/numbers.cpp > bandaid_build/nano/lib/numbers.cpp.awk
