@@ -200,7 +200,7 @@ awk  'NR==114 { sub("8.", "1e-10") }; { print $0 }' bandaid_build/nano/core_test
 mv bandaid_build/nano/core_test/difficulty.cpp.awk bandaid_build/nano/core_test/difficulty.cpp;
 
 #nano/core_test/message.cpp
-awk  'NR==55 { sub("0x52", "0x42") }; { print $0 }' bandaid_build/nano/core_test/message.cpp > bandaid_build/nano/core_test/message.cpp.awk
+awk  'NR==75 { sub("0x52", "0x42") }; { print $0 }' bandaid_build/nano/core_test/message.cpp > bandaid_build/nano/core_test/message.cpp.awk
 mv bandaid_build/nano/core_test/message.cpp.awk bandaid_build/nano/core_test/message.cpp;
 
 #nano/core_test/toml.cpp
