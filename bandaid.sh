@@ -8,8 +8,8 @@ reset;
 # https://github.com/nanocurrency/nano-node/compare/V22.1...BananoCoin:V22dev2
 # https://github.com/BananoCoin/banano/compare/V23develop...nanocurrency:develop
 
-# check_type=BananoCoin_v24_vs_nanocurrency_v24
-check_type="local"
+check_type=BananoCoin_v24_vs_nanocurrency_v24
+# check_type="local"
 
 if [ $check_type = "BananoCoin_v24_vs_nanocurrency_v24" ]
 then
@@ -119,7 +119,7 @@ awk  'NR==31 || NR==48 || NR==49 || NR==50 || NR==54 { sub("nanocurrency", "bana
 mv bandaid_build/ci/actions/linux/docker-deploy.sh.awk bandaid_build/ci/actions/linux/docker-deploy.sh;
 
 #ci/actions/linux/install_deps.sh
-awk  'NR==5 || NR==6 || NR==7 || NR==9 || NR==12 || NR==10 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/actions/linux/install_deps.sh > bandaid_build/ci/actions/linux/install_deps.sh.awk
+awk  'NR==10 || NR==12 || NR==14 || NR==15 || NR==16 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/actions/linux/install_deps.sh > bandaid_build/ci/actions/linux/install_deps.sh.awk
 mv bandaid_build/ci/actions/linux/install_deps.sh.awk bandaid_build/ci/actions/linux/install_deps.sh;
 
 #ci/actions/linux/docker-impl/docker-common.sh
@@ -142,7 +142,7 @@ awk  'NR==17 { sub("nano-node", "bananode") }; { print $0 }' bandaid_build/ci/ac
 mv bandaid_build/ci/actions/deploy.sh.awk bandaid_build/ci/actions/deploy.sh;
 
 #ci/build-centos.sh
-awk  'NR==13 || NR==14 || NR==18 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/build-centos.sh > bandaid_build/ci/build-centos.sh.awk
+awk  'NR==15 || NR==17 || NR==22 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/build-centos.sh > bandaid_build/ci/build-centos.sh.awk
 mv bandaid_build/ci/build-centos.sh.awk bandaid_build/ci/build-centos.sh;
 
 #debian-control/postinst.in
@@ -154,10 +154,6 @@ mv bandaid_build/debian-control/postinst.in.awk bandaid_build/debian-control/pos
 
 awk  'NR==8 || NR==9 || NR==10 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/debian-control/postinst.in > bandaid_build/debian-control/postinst.in.awk
 mv bandaid_build/debian-control/postinst.in.awk bandaid_build/debian-control/postinst.in;
-
-#doxygen.config
-awk  'NR==35 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/doxygen.config > bandaid_build/doxygen.config.awk
-mv bandaid_build/doxygen.config.awk bandaid_build/doxygen.config;
 
 #etc/systemd/nanocurrency-beta.service
 awk  'NR==2 || NR==8 || NR==9 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/etc/systemd/nanocurrency-beta.service > bandaid_build/etc/systemd/nanocurrency-beta.service.awk
@@ -181,19 +177,19 @@ awk  'NR==7 || NR==8 || NR==9 { sub("nanocurrency", "bananocoin") }; { print $0 
 mv bandaid_build/etc/systemd/nanocurrency.service.awk bandaid_build/etc/systemd/nanocurrency.service;
 
 #nano/core_test/block.cpp
-awk  'NR==512 || NR==515 || NR==554 || NR==557 || NR==573 || NR==615 || NR==618 || NR==669 || NR==707 { sub("xrb_", "ban_") }; { print $0 }' bandaid_build/nano/core_test/block.cpp > bandaid_build/nano/core_test/block.cpp.awk
+awk  'NR==611 || NR==514 || NR==653 || NR==656 || NR==672 || NR==614 || NR==714 || NR==717 || NR==768 || NR==806 { sub("xrb_", "ban_") }; { print $0 }' bandaid_build/nano/core_test/block.cpp > bandaid_build/nano/core_test/block.cpp.awk
 mv bandaid_build/nano/core_test/block.cpp.awk bandaid_build/nano/core_test/block.cpp;
 
-awk  'NR==629 || NR==630 { sub("xrb_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3", "ban_1bananobh5rat99qfgt1ptpieie5swmoth87thi74qgbfrij7dcgjiij94xr") }; { print $0 }' bandaid_build/nano/core_test/block.cpp > bandaid_build/nano/core_test/block.cpp.awk
+awk  'NR==728 || NR==729 { sub("xrb_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3", "ban_1bananobh5rat99qfgt1ptpieie5swmoth87thi74qgbfrij7dcgjiij94xr") }; { print $0 }' bandaid_build/nano/core_test/block.cpp > bandaid_build/nano/core_test/block.cpp.awk
 mv bandaid_build/nano/core_test/block.cpp.awk bandaid_build/nano/core_test/block.cpp;
 
-awk  'NR==631 || NR==634 { sub("E89208DD038FBB269987689621D52292AE9C35941A7484756ECCED92A65093BA", "2514452A978F08D1CF76BB40B6AD064183CF275D3CC5D3E0515DC96E2112AD4E") }; { print $0 }' bandaid_build/nano/core_test/block.cpp > bandaid_build/nano/core_test/block.cpp.awk
+awk  'NR==730 || NR==733 { sub("E89208DD038FBB269987689621D52292AE9C35941A7484756ECCED92A65093BA", "2514452A978F08D1CF76BB40B6AD064183CF275D3CC5D3E0515DC96E2112AD4E") }; { print $0 }' bandaid_build/nano/core_test/block.cpp > bandaid_build/nano/core_test/block.cpp.awk
 mv bandaid_build/nano/core_test/block.cpp.awk bandaid_build/nano/core_test/block.cpp;
 
-awk  'NR==633 { sub("991CF190094C00F0B68E2E5F75F6BEE95A2E0BD93CEAA4A6734DB9F19B728948", "F61A79F286ABC5CC01D3D09686F0567812B889A5C63ADE0E82DD30F3B2D96463") }; { print $0 }' bandaid_build/nano/core_test/block.cpp > bandaid_build/nano/core_test/block.cpp.awk
+awk  'NR==732 { sub("991CF190094C00F0B68E2E5F75F6BEE95A2E0BD93CEAA4A6734DB9F19B728948", "F61A79F286ABC5CC01D3D09686F0567812B889A5C63ADE0E82DD30F3B2D96463") }; { print $0 }' bandaid_build/nano/core_test/block.cpp > bandaid_build/nano/core_test/block.cpp.awk
 mv bandaid_build/nano/core_test/block.cpp.awk bandaid_build/nano/core_test/block.cpp;
 
-awk  'NR==713 { sub("nano_1gys8r4crpxhp94n4uho5cshaho81na6454qni5gu9n53gksoyy1wcd4udyb", "ban_1gys8r4crpxhp94n4uho5cshaho81na6454qni5gu9n53gksoyy1wcd4udyb") }; { print $0 }' bandaid_build/nano/core_test/block.cpp > bandaid_build/nano/core_test/block.cpp.awk
+awk  'NR==812 { sub("nano_1gys8r4crpxhp94n4uho5cshaho81na6454qni5gu9n53gksoyy1wcd4udyb", "ban_1gys8r4crpxhp94n4uho5cshaho81na6454qni5gu9n53gksoyy1wcd4udyb") }; { print $0 }' bandaid_build/nano/core_test/block.cpp > bandaid_build/nano/core_test/block.cpp.awk
 mv bandaid_build/nano/core_test/block.cpp.awk bandaid_build/nano/core_test/block.cpp;
 
 #nano/core_test/difficulty.cpp
