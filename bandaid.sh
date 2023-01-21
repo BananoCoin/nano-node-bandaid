@@ -8,8 +8,8 @@ reset;
 # https://github.com/nanocurrency/nano-node/compare/V22.1...BananoCoin:V22dev2
 # https://github.com/BananoCoin/banano/compare/V23develop...nanocurrency:develop
 
-# check_type=BananoCoin_v24_vs_nanocurrency_v24
-check_type="local"
+check_type=BananoCoin_v24_vs_nanocurrency_v24
+# check_type="local"
 
 if [ $check_type = "BananoCoin_v24_vs_nanocurrency_v24" ]
 then
@@ -302,11 +302,11 @@ mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 awk  'NR==132 { sub("X", "C") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-# awk  'NR==70 || NR==73 || NR==76 || NR==79 { sub("rai", "banano") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
-# mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
+awk  'NR==126 || NR==128 || NR==130 || NR==132 { sub("nano", "banano") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-# awk  'NR==142 { sub("1000; // 0.1%", "2000; // 0.2%") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
-# mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
+awk  'NR==199 { sub("1000), // 0.1%", "2000), // 0.2%") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
 awk  'NR==219 { sub("7075", "7071") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
@@ -394,16 +394,16 @@ awk  'NR==30 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/nano_wa
 mv bandaid_build/nano/nano_wallet/entry.cpp.awk bandaid_build/nano/nano_wallet/entry.cpp;
 
 #nano/node/bootstrap/bootstrap_frontier.cpp
-awk  'NR==36 || NR==209 || NR==308 || NR==324 { sub("%1%", "%1%, to %2%") }; { print $0 }' bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp > bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk
+awk  'NR==37 || NR==210 || NR==309 || NR==328 { sub("%1%", "%1%, to %2%") }; { print $0 }' bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp > bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk
 mv bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp;
 
-awk  'NR==36 { sub("ec.message ()", "ec.message () % this_l->connection->channel->to_string ") }; { print $0 }' bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp > bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk
+awk  'NR==37 { sub("ec.message ()", "ec.message () % this_l->connection->channel->to_string ") }; { print $0 }' bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp > bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk
 mv bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp;
 
-awk  'NR==209 { sub("ec.message ()", "ec.message () % connection->channel->to_string ") }; { print $0 }' bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp > bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk
+awk  'NR==210 { sub("ec.message ()", "ec.message () % connection->channel->to_string ") }; { print $0 }' bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp > bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk
 mv bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp;
 
-awk  'NR==308 || NR==324 { sub("ec.message ()", "ec.message () % connection->socket->remote_endpoint ") }; { print $0 }' bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp > bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk
+awk  'NR==309 || NR==328 { sub("ec.message ()", "ec.message () % connection->socket->remote_endpoint ") }; { print $0 }' bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp > bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk
 mv bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp;
 
 #nano/node/cli.cpp
