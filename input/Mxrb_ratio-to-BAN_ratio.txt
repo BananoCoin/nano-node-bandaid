@@ -8,6 +8,7 @@ nano/nano_node/entry.cpp
 nano/node/bootstrap/bootstrap_server.cpp
 nano/node/json_handler.hpp
 nano/node/node.cpp
+nano/node/transport/tcp_server.cpp
 nano/slow_test/node.cpp
 nano/rpc_test/rpc.cpp
 nano/lib/numbers.hpp
