@@ -877,6 +877,15 @@ mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp
 awk  'NR==80 { sub("nano_1gxf7jcnomi7yqkkjyxwwygo5sckrohtgsgezp6u74g6ifgydw4cajwbk8bf", "ban_3finchb9x33ype7r7495hoh9rs46hyb17sebogh7ghf6ar8zheiucm87mfha") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
+awk  'NR==84 || NR==89 || NR==90 || NR==114 || NR==115 || NR==123 || NR==124 || NR==130 || NR==148 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
+mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
+
+awk  'NR==89 || NR==114 || NR==123 || NR==130 || NR==131 || NR==148 || NR==149 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
+mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
+
+awk  'NR==90 || NR==115 || NR==124 || NR==131 || NR==149 { sub("\\? nano", "  ? nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
+mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
+
 awk  'NR==94 { sub("\047R\047, \047A\047", "\047B\047, \047Z\047") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
