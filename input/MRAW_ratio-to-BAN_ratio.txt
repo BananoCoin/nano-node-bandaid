@@ -1,2 +1,0 @@
-nano/core_test/uint256_union.cpp
-nano/lib/numbers.hpp
