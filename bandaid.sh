@@ -728,6 +728,10 @@ mv bandaid_build/nano/node/json_handler.hpp.awk bandaid_build/nano/node/json_han
 awk  'NR==101 { print "\tvoid representatives_decimal_millions ();" }; { print $0 }' bandaid_build/nano/node/json_handler.hpp > bandaid_build/nano/node/json_handler.hpp.awk
 mv bandaid_build/nano/node/json_handler.hpp.awk bandaid_build/nano/node/json_handler.hpp;
 
+#nano/node/network.cpp
+awk  'NR==1088 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/node/network.cpp > bandaid_build/nano/node/network.cpp.awk
+mv bandaid_build/nano/node/network.cpp.awk bandaid_build/nano/node/network.cpp;
+
 #nano/node/logging.cpp
 awk  'NR==42 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/node/logging.cpp > bandaid_build/nano/node/logging.cpp.awk
 mv bandaid_build/nano/node/logging.cpp.awk bandaid_build/nano/node/logging.cpp;
