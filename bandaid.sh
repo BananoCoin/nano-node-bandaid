@@ -8,8 +8,8 @@ reset;
 # https://github.com/nanocurrency/nano-node/compare/V22.1...BananoCoin:V22dev2
 # https://github.com/BananoCoin/banano/compare/V23develop...nanocurrency:develop
 
-check_type=BananoCoin_v24_vs_nanocurrency_v24
-# check_type="local"
+# check_type=BananoCoin_v24_vs_nanocurrency_v24
+check_type="local"
 
 if [ $check_type = "BananoCoin_v24_vs_nanocurrency_v24" ]
 then
@@ -59,6 +59,16 @@ cp banano_build/rep_weights_beta.bin bandaid_build/rep_weights_beta.bin;
 cp banano_build/nano/lib/convert.cpp bandaid_build/nano/lib/convert.cpp;
 cp banano_build/nano/lib/convert.hpp bandaid_build/nano/lib/convert.hpp;
 
+#.gitignore
+awk  'NR==33 || NR==34 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/.gitignore > bandaid_build/.gitignore.awk
+mv bandaid_build/.gitignore.awk bandaid_build/.gitignore;
+
+awk  'NR==35 || NR==36 { sub("nano_wallet", "banano_wallet") }; { print $0 }' bandaid_build/.gitignore > bandaid_build/.gitignore.awk
+mv bandaid_build/.gitignore.awk bandaid_build/.gitignore;
+
+awk  'NR==39 || NR==40 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_build/.gitignore > bandaid_build/.gitignore.awk
+mv bandaid_build/.gitignore.awk bandaid_build/.gitignore;
+
 #nanocurrency.spec.in
 awk  'NR==1 || NR==13 || NR==45 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
@@ -79,6 +89,18 @@ awk  'NR==4 || NR==58 || NR==60 || NR==61 { sub("Nano", "Banano") }; { print $0 
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
 awk  'NR==13 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
+awk  'NR==36 || NR==43 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
+awk  'NR==43 || NR==52 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
+awk  'NR==37 || NR==44 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
+awk  'NR==44 || NR==53 { sub("/nano_rpc", "/banano_rpc") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
 #util/changelog.py
@@ -126,6 +148,10 @@ mv bandaid_build/CMakeLists.txt.awk bandaid_build/CMakeLists.txt;
 awk  'NR==3 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/api/flatbuffers/nanoapi.fbs > bandaid_build/api/flatbuffers/nanoapi.fbs.awk
 mv bandaid_build/api/flatbuffers/nanoapi.fbs.awk bandaid_build/api/flatbuffers/nanoapi.fbs;
 
+#ci/test.sh
+awk  'NR==59 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/ci/test.sh > bandaid_build/ci/test.sh.awk
+mv bandaid_build/ci/test.sh.awk bandaid_build/ci/test.sh;
+
 #ci/build-gitlab.sh
 awk  'NR==56 || NR==59 { sub("=nano_", "=banano_") }; { print $0 }' bandaid_build/ci/build-gitlab.sh > bandaid_build/ci/build-gitlab.sh.awk
 mv bandaid_build/ci/build-gitlab.sh.awk bandaid_build/ci/build-gitlab.sh;
@@ -161,6 +187,16 @@ mv bandaid_build/ci/actions/deploy.sh.awk bandaid_build/ci/actions/deploy.sh;
 awk  'NR==15 || NR==17 || NR==22 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/build-centos.sh > bandaid_build/ci/build-centos.sh.awk
 mv bandaid_build/ci/build-centos.sh.awk bandaid_build/ci/build-centos.sh;
 
+#coverage/CMakeLists.txt 
+awk  'NR==36 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/coverage/CMakeLists.txt > bandaid_build/coverage/CMakeLists.txt.awk;
+mv bandaid_build/coverage/CMakeLists.txt.awk bandaid_build/coverage/CMakeLists.txt
+
+awk  'NR==37 { sub("nano_wallet", "banano_wallet") }; { print $0 }' bandaid_build/coverage/CMakeLists.txt > bandaid_build/coverage/CMakeLists.txt.awk;
+mv bandaid_build/coverage/CMakeLists.txt.awk bandaid_build/coverage/CMakeLists.txt
+
+awk  'NR==38 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_build/coverage/CMakeLists.txt > bandaid_build/coverage/CMakeLists.txt.awk;
+mv bandaid_build/coverage/CMakeLists.txt.awk bandaid_build/coverage/CMakeLists.txt
+
 #debian-control/postinst.in
 awk  'NR==5 || NR==6 || NR==8 || NR==9 || NR==10 || NR==11  { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/debian-control/postinst.in > bandaid_build/debian-control/postinst.in.awk
 mv bandaid_build/debian-control/postinst.in.awk bandaid_build/debian-control/postinst.in;
@@ -178,6 +214,9 @@ mv bandaid_build/etc/systemd/nanocurrency-beta.service.awk bandaid_build/etc/sys
 awk  'NR==7 || NR==8 || NR==9 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/etc/systemd/nanocurrency-beta.service > bandaid_build/etc/systemd/nanocurrency-beta.service.awk
 mv bandaid_build/etc/systemd/nanocurrency-beta.service.awk bandaid_build/etc/systemd/nanocurrency-beta.service;
 
+awk  'NR==7 || NR==8 || NR==9 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/etc/systemd/nanocurrency-beta.service > bandaid_build/etc/systemd/nanocurrency-beta.service.awk
+mv bandaid_build/etc/systemd/nanocurrency-beta.service.awk bandaid_build/etc/systemd/nanocurrency-beta.service;
+
 #etc/systemd/nanocurrency-test.service
 awk  'NR==2 || NR==8 || NR==9 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/etc/systemd/nanocurrency-test.service > bandaid_build/etc/systemd/nanocurrency-test.service.awk
 mv bandaid_build/etc/systemd/nanocurrency-test.service.awk bandaid_build/etc/systemd/nanocurrency-test.service;
@@ -185,11 +224,17 @@ mv bandaid_build/etc/systemd/nanocurrency-test.service.awk bandaid_build/etc/sys
 awk  'NR==7 || NR==8 || NR==9 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/etc/systemd/nanocurrency-test.service > bandaid_build/etc/systemd/nanocurrency-test.service.awk
 mv bandaid_build/etc/systemd/nanocurrency-test.service.awk bandaid_build/etc/systemd/nanocurrency-test.service;
 
+awk  'NR==7 || NR==8 || NR==9 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/etc/systemd/nanocurrency-test.service > bandaid_build/etc/systemd/nanocurrency-test.service.awk
+mv bandaid_build/etc/systemd/nanocurrency-test.service.awk bandaid_build/etc/systemd/nanocurrency-test.service;
+
 #etc/systemd/nanocurrency.service
 awk  'NR==2 || NR==8 || NR==9 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/etc/systemd/nanocurrency.service > bandaid_build/etc/systemd/nanocurrency.service.awk
 mv bandaid_build/etc/systemd/nanocurrency.service.awk bandaid_build/etc/systemd/nanocurrency.service;
 
 awk  'NR==7 || NR==8 || NR==9 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/etc/systemd/nanocurrency.service > bandaid_build/etc/systemd/nanocurrency.service.awk
+mv bandaid_build/etc/systemd/nanocurrency.service.awk bandaid_build/etc/systemd/nanocurrency.service;
+
+awk  'NR==7 || NR==8 || NR==9 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/etc/systemd/nanocurrency.service > bandaid_build/etc/systemd/nanocurrency.service.awk
 mv bandaid_build/etc/systemd/nanocurrency.service.awk bandaid_build/etc/systemd/nanocurrency.service;
 
 #nano/core_test/telemetry.cpp
@@ -913,7 +958,7 @@ mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp
 awk  'NR==146 { sub("nano_3qb6o6i1tkzr6jwr5s7eehfxwg9x6eemitdinbpi7u8bjjwsgqfj4wzser3x", "bano_3qb6o6i1tkzr6jwr5s7eehfxwg9x6eemitdinbpi7u8bjjwsgqfj4wzser3x") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
-# nano/secure/common.hpp
+#nano/secure/common.hpp
 awk  'NR==359 { sub("0x12", "0x11") }; { print $0 }' bandaid_build/nano/secure/common.hpp > bandaid_build/nano/secure/common.hpp.awk
 mv bandaid_build/nano/secure/common.hpp.awk bandaid_build/nano/secure/common.hpp;
 
@@ -948,6 +993,24 @@ mv bandaid_build/nanocurrency-beta.spec.in.awk bandaid_build/nanocurrency-beta.s
 
 awk  'NR==4 || NR==13 || NR==58 || NR==60 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nanocurrency-beta.spec.in > bandaid_build/nanocurrency-beta.spec.in.awk
 mv bandaid_build/nanocurrency-beta.spec.in.awk bandaid_build/nanocurrency-beta.spec.in;
+
+awk  'NR==36 || NR==43 || NR==52 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/nanocurrency-beta.spec.in > bandaid_build/nanocurrency-beta.spec.in.awk
+mv bandaid_build/nanocurrency-beta.spec.in.awk bandaid_build/nanocurrency-beta.spec.in;
+
+awk  'NR==43 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/nanocurrency-beta.spec.in > bandaid_build/nanocurrency-beta.spec.in.awk
+mv bandaid_build/nanocurrency-beta.spec.in.awk bandaid_build/nanocurrency-beta.spec.in;
+
+#systest/cli_wallet_create.sh
+awk  'NR==9 || NR==10 || NR==11 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/systest/cli_wallet_create.sh > bandaid_build/systest/cli_wallet_create.sh.awk
+mv bandaid_build/systest/cli_wallet_create.sh.awk bandaid_build/systest/cli_wallet_create.sh;
+
+#systest/node_initialize.sh
+awk  'NR==7 || NR==8 || NR==9 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/systest/node_initialize.sh > bandaid_build/systest/node_initialize.sh.awk
+mv bandaid_build/systest/node_initialize.sh.awk bandaid_build/systest/node_initialize.sh;
+
+#systest/set_bandwidth_params.sh.disabled
+awk  'NR==26 || NR==27 || NR==28 || NR==33 || NR==35 || NR==50 || NR==63 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/systest/set_bandwidth_params.sh.disabled > bandaid_build/systest/set_bandwidth_params.sh.disabled.awk
+mv bandaid_build/systest/set_bandwidth_params.sh.disabled.awk bandaid_build/systest/set_bandwidth_params.sh.disabled;
 
 #util/build_prep/bootstrap_boost.sh
 awk  'NR==21 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/util/build_prep/bootstrap_boost.sh > bandaid_build/util/build_prep/bootstrap_boost.sh.awk
