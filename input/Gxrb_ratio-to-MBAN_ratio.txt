@@ -23,3 +23,4 @@ nano/rpc_test/rpc.cpp
 nano/rpc_test/rpc.cpp
 nano/node/nodeconfig.hpp
 nano/lib/numbers.hpp
+nano/slow_test/vote_cache.cpp

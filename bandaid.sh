@@ -18,7 +18,7 @@ then
   rm -rf banano_build;
   rm -rf nano_build;
   git clone -c advice.detachedHead=false --depth 1 --branch v24 https://github.com/BananoCoin/banano.git banano_build;
-  git clone -c advice.detachedHead=false --depth 1 --branch releases/v24 https://github.com/nanocurrency/nano-node.git nano_build;
+  git clone -c advice.detachedHead=false --depth 1 --branch V24.0 https://github.com/nanocurrency/nano-node.git nano_build;
 elif [ $check_type = "local" ]
 then
   echo "comparing local"
@@ -186,6 +186,10 @@ mv bandaid_build/ci/actions/deploy.sh.awk bandaid_build/ci/actions/deploy.sh;
 #ci/build-centos.sh
 awk  'NR==15 || NR==17 || NR==22 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/build-centos.sh > bandaid_build/ci/build-centos.sh.awk
 mv bandaid_build/ci/build-centos.sh.awk bandaid_build/ci/build-centos.sh;
+
+#ci/record_rep_weights.py
+awk  'NR==56 { sub("nano_", "ban_") }; { print $0 }' bandaid_build/ci/record_rep_weights.py > bandaid_build/ci/record_rep_weights.py.awk
+mv bandaid_build/ci/record_rep_weights.py.awk bandaid_build/ci/record_rep_weights.py;
 
 #coverage/CMakeLists.txt 
 awk  'NR==36 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/coverage/CMakeLists.txt > bandaid_build/coverage/CMakeLists.txt.awk;
