@@ -8,8 +8,8 @@ reset;
 # https://github.com/nanocurrency/nano-node/compare/V22.1...BananoCoin:V22dev2
 # https://github.com/BananoCoin/banano/compare/V23develop...nanocurrency:develop
 
-# check_type=BananoCoin_v24_vs_nanocurrency_v24
-check_type="local"
+check_type=BananoCoin_v24_vs_nanocurrency_v24
+# check_type="local"
 
 if [ $check_type = "BananoCoin_v24_vs_nanocurrency_v24" ]
 then
