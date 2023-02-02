@@ -8,7 +8,8 @@ reset;
 # https://github.com/nanocurrency/nano-node/compare/V22.1...BananoCoin:V22dev2
 # https://github.com/BananoCoin/banano/compare/V23develop...nanocurrency:develop
 
-check_type=BananoCoin_v24_vs_nanocurrency_v24
+# check_type=BananoCoin_v24_vs_nanocurrency_v24
+check_type=BananoCoin_master_vs_nanocurrency_v24
 # check_type="local"
 
 if [ $check_type = "BananoCoin_v24_vs_nanocurrency_v24" ]
@@ -18,6 +19,14 @@ then
   rm -rf banano_build;
   rm -rf nano_build;
   git clone -c advice.detachedHead=false --depth 1 --branch v24 https://github.com/BananoCoin/banano.git banano_build;
+  git clone -c advice.detachedHead=false --depth 1 --branch V24.0 https://github.com/nanocurrency/nano-node.git nano_build;
+elif [ $check_type = "BananoCoin_master_vs_nanocurrency_v24" ]
+then
+  echo "comparing BananoCoin master vs nanocurrency releases/v24"
+  # --depth 1 means clone with no history.
+  rm -rf banano_build;
+  rm -rf nano_build;
+  git clone -c advice.detachedHead=false --depth 1 --branch master https://github.com/BananoCoin/banano.git banano_build;
   git clone -c advice.detachedHead=false --depth 1 --branch V24.0 https://github.com/nanocurrency/nano-node.git nano_build;
 elif [ $check_type = "local" ]
 then
