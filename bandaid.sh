@@ -10,7 +10,7 @@ reset;
 
 check_type=BananoCoin_v25_vs_nanocurrency_v25
 # check_type=BananoCoin_master_vs_nanocurrency_v24
-# check_type="local"
+check_type="local"
 
 if [ $check_type = "BananoCoin_v25_vs_nanocurrency_v25" ]
 then
@@ -330,8 +330,8 @@ awk  'NR==13 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/ipc_fla
 mv bandaid_build/nano/ipc_flatbuffers_lib/flatbuffer_producer.hpp.awk bandaid_build/nano/ipc_flatbuffers_lib/flatbuffer_producer.hpp;
 
 #nano/lib/CMakeLists.txt
-awk 'NR==33 { print "  convert.cpp\n  convert.hpp" }; { print $0 }' bandaid_build/nano/lib/CMakeLists.txt > bandaid_build/nano/lib/CMakeLists.txt.awk
-mv bandaid_build/nano/lib/CMakeLists.txt.awk bandaid_build/nano/lib/CMakeLists.txt;
+# awk 'NR==33 { print "  convert.cpp\n  convert.hpp" }; { print $0 }' bandaid_build/nano/lib/CMakeLists.txt > bandaid_build/nano/lib/CMakeLists.txt.awk
+# mv bandaid_build/nano/lib/CMakeLists.txt.awk bandaid_build/nano/lib/CMakeLists.txt;
 
 #nano/lib/blocks.cpp
 awk 'NR==3 { print "#include <nano/lib/convert.hpp>" }; { print $0 }' bandaid_build/nano/lib/blocks.cpp > bandaid_build/nano/lib/blocks.cpp.awk
@@ -385,7 +385,7 @@ mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 awk  'NR==132 { sub("X", "C") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==126 || NR==128 || NR==130 || NR==132 { sub("nano", "banano") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==126 || NR==128 || NR==130 || NR==132  || NR==134 { sub("nano", "banano") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
 awk  'NR==199 { sub("1000), // 0.1%", "2000), // 0.2%") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
@@ -497,13 +497,13 @@ awk  'NR==309 || NR==328 { sub("ec.message ()", "ec.message () % connection->soc
 mv bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp;
 
 #nano/node/cli.cpp
-awk 'NR==78 { print "\t(\"timestamps_import\", \"Imports a CSV file, overwriting the timestamps recorded in the database (warning: high resource usage).\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk
+awk 'NR==84 { print "\t(\"timestamps_import\", \"Imports a CSV file, overwriting the timestamps recorded in the database (warning: high resource usage).\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk
 mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
 
-awk 'NR==79 { print "\t(\"timestamps_export\", \"Writes a CSV file with the local timestamp recorded for each hash with timestamp in the database.\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
+awk 'NR==85 { print "\t(\"timestamps_export\", \"Writes a CSV file with the local timestamp recorded for each hash with timestamp in the database.\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
 mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
 
-awk 'NR==80 { print "\t(\"timestamps_update_frontiers\", \"Updates the \047modified\047 timestamp of each account chain with the stamps of each frontier\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
+awk 'NR==86 { print "\t(\"timestamps_update_frontiers\", \"Updates the \047modified\047 timestamp of each account chain with the stamps of each frontier\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
 mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
 
   # copy lines from bandaid_build, (nano with edits)
@@ -515,17 +515,17 @@ sed -n '10,77p' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.c
 sed -n '78,90p' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 
   # copy lines from banano_build, (banano with no edits)
-sed -n '92,94p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+# sed -n '92,94p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 
   # copy lines from bandaid_build, (nano with edits)
-sed -n '91,1297p' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+sed -n '91,1357p' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 
   # copy lines from banano_build, (banano with no edits)
-sed -n '1302,1558p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+sed -n '1358,1558p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 
   #copy to the end, delete the top lines.
-sed '1,1320d' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
-mv bandaid_build/nano/node/cli.cpp.sed bandaid_build/nano/node/cli.cpp;
+# sed '1,1320d' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+# mv bandaid_build/nano/node/cli.cpp.sed bandaid_build/nano/node/cli.cpp;
 
 awk  'NR==91 { sub("entries\"\);", "entries\"\)") }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
 mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
