@@ -10,7 +10,7 @@ reset;
 
 check_type=BananoCoin_v25_vs_nanocurrency_v25
 # check_type=BananoCoin_master_vs_nanocurrency_v24
-check_type="local"
+# check_type="local"
 
 if [ $check_type = "BananoCoin_v25_vs_nanocurrency_v25" ]
 then
@@ -364,46 +364,46 @@ awk  'NR==270 { sub("nano_dev_network", "banano_dev_network") }; { print $0 }' b
 mv bandaid_build/nano/lib/config.cpp.awk bandaid_build/nano/lib/config.cpp;
 
 #nano/lib/config.hpp
-awk  'NR==126 { sub("0x5241", "0x4241") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==128 { sub("0x5241", "0x4241") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==128 { sub("0x5242", "0x4242") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==130 { sub("0x5242", "0x4242") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==130 { sub("0x5243", "0x4258") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==132 { sub("0x5243", "0x4258") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==132 { sub("0x5258", "0x4243") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==134 { sub("0x5258", "0x4243") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==126 || NR==128 || NR==130 || NR==132 { sub("R", "B") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==128 || NR==130 || NR==132 || NR==134 { sub("R", "B") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==130 { sub("C", "X") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==132 { sub("C", "X") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==132 { sub("X", "C") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==134 { sub("X", "C") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==126 || NR==128 || NR==130 || NR==132  || NR==134 { sub("nano", "banano") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==128 || NR==130 || NR==132 || NR==134 || NR==136 { sub("nano", "banano") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
 awk  'NR==199 { sub("1000), // 0.1%", "2000), // 0.2%") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==219 { sub("7075", "7071") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==221 { sub("7075", "7071") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==220 { sub("7076", "7072") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==222 { sub("7076", "7072") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==221 { sub("7077", "7073") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==223 { sub("7077", "7073") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==222 { sub("7078", "7074") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==224 { sub("7078", "7074") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
-awk  'NR==270 || NR==316 || NR==320 || NR==324 || NR==328 || NR==346 || NR==350 || NR==354 || NR==358 { sub("nano_", "banano_") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
+awk  'NR==335 || NR==339 || NR==343 || NR==347 || NR==365 || NR==369 || NR==373 || NR==377 { sub("nano_", "banano_") }; { print $0 }' bandaid_build/nano/lib/config.hpp > bandaid_build/nano/lib/config.hpp.awk
 mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 
 
@@ -412,31 +412,32 @@ mv bandaid_build/nano/lib/config.hpp.awk bandaid_build/nano/lib/config.hpp;
 awk  'NR==54 { sub("destination_a.append \\(\"_onan\"\\); // nano_", "destination_a.append (\"_nab\");") }; { print $0 }' bandaid_build/nano/lib/numbers.cpp > bandaid_build/nano/lib/numbers.cpp.awk
 mv bandaid_build/nano/lib/numbers.cpp.awk bandaid_build/nano/lib/numbers.cpp;
 
-awk  'NR==90 || NR==93 || NR==96 || NR==98 { sub("xrb", "ban") }; { print $0 }' bandaid_build/nano/lib/numbers.cpp > bandaid_build/nano/lib/numbers.cpp.awk
+awk  'NR==91 || NR==93 || NR==96 || NR==98 { sub("xrb", "ban") }; { print $0 }' bandaid_build/nano/lib/numbers.cpp > bandaid_build/nano/lib/numbers.cpp.awk
 mv bandaid_build/nano/lib/numbers.cpp.awk bandaid_build/nano/lib/numbers.cpp;
 
-awk  'NR==90 { sub("\047b\047", "\047n\047") }; { print $0 }' bandaid_build/nano/lib/numbers.cpp > bandaid_build/nano/lib/numbers.cpp.awk
+awk  'NR==91 { sub("\047b\047", "\047n\047") }; { print $0 }' bandaid_build/nano/lib/numbers.cpp > bandaid_build/nano/lib/numbers.cpp.awk
 mv bandaid_build/nano/lib/numbers.cpp.awk bandaid_build/nano/lib/numbers.cpp;
 
-awk  'NR==90 { sub("\047r\047", "\047a\047") }; { print $0 }' bandaid_build/nano/lib/numbers.cpp > bandaid_build/nano/lib/numbers.cpp.awk
+awk  'NR==91 { sub("\047r\047", "\047a\047") }; { print $0 }' bandaid_build/nano/lib/numbers.cpp > bandaid_build/nano/lib/numbers.cpp.awk
 mv bandaid_build/nano/lib/numbers.cpp.awk bandaid_build/nano/lib/numbers.cpp;
 
-awk  'NR==90 { sub("\047x\047", "\047b\047") }; { print $0 }' bandaid_build/nano/lib/numbers.cpp > bandaid_build/nano/lib/numbers.cpp.awk
+awk  'NR==91 { sub("\047x\047", "\047b\047") }; { print $0 }' bandaid_build/nano/lib/numbers.cpp > bandaid_build/nano/lib/numbers.cpp.awk
 mv bandaid_build/nano/lib/numbers.cpp.awk bandaid_build/nano/lib/numbers.cpp;
 
-awk  'NR==91 { sub("source_a\\[0\\] == \047n\047", "source_a[0] == \047b\047") }; { print $0 }' bandaid_build/nano/lib/numbers.cpp > bandaid_build/nano/lib/numbers.cpp.awk
+awk  'NR==92 { sub("source_a\\[0\\] == \047n\047", "source_a[0] == \047b\047") }; { print $0 }' bandaid_build/nano/lib/numbers.cpp > bandaid_build/nano/lib/numbers.cpp.awk
 mv bandaid_build/nano/lib/numbers.cpp.awk bandaid_build/nano/lib/numbers.cpp;
 
-awk  'NR==12 { sub("Gxrb_ratio = nano::uint128_t \\(\"1000000000000000000000000000000000\"\\); // 10\\^33", "MBAN_ratio = nano::uint128_t (\"100000000000000000000000000000000000\"); // 10^35 = 1 million banano") }; { print $0 }' bandaid_build/nano/lib/numbers.hpp > bandaid_build/nano/lib/numbers.hpp.awk
+#nano/lib/numbers.hpp
+awk  'NR==14 { sub("Gxrb_ratio = nano::uint128_t \\(\"1000000000000000000000000000000000\"\\); // 10\\^33", "MBAN_ratio = nano::uint128_t (\"100000000000000000000000000000000000\"); // 10^35 = 1 million banano") }; { print $0 }' bandaid_build/nano/lib/numbers.hpp > bandaid_build/nano/lib/numbers.hpp.awk
 mv bandaid_build/nano/lib/numbers.hpp.awk bandaid_build/nano/lib/numbers.hpp;
 
-awk  'NR==13 { sub("Mxrb_ratio = nano::uint128_t \\(\"1000000000000000000000000000000\"\\); // 10\\^30", "BAN_ratio = nano::uint128_t (\"100000000000000000000000000000\"); // 10^29 = 1 banano") }; { print $0 }' bandaid_build/nano/lib/numbers.hpp > bandaid_build/nano/lib/numbers.hpp.awk
+awk  'NR==15 { sub("Mxrb_ratio = nano::uint128_t \\(\"1000000000000000000000000000000\"\\); // 10\\^30", "BAN_ratio = nano::uint128_t (\"100000000000000000000000000000\"); // 10^29 = 1 banano") }; { print $0 }' bandaid_build/nano/lib/numbers.hpp > bandaid_build/nano/lib/numbers.hpp.awk
 mv bandaid_build/nano/lib/numbers.hpp.awk bandaid_build/nano/lib/numbers.hpp;
 
-awk  'NR==14 { sub("kxrb_ratio = nano::uint128_t \\(\"1000000000000000000000000000\"\\); // 10\\^27", "banoshi_ratio = nano::uint128_t (\"1000000000000000000000000000\"); // 10^27 = 1 hundredth banano") }; { print $0 }' bandaid_build/nano/lib/numbers.hpp > bandaid_build/nano/lib/numbers.hpp.awk
+awk  'NR==16 { sub("kxrb_ratio = nano::uint128_t \\(\"1000000000000000000000000000\"\\); // 10\\^27", "banoshi_ratio = nano::uint128_t (\"1000000000000000000000000000\"); // 10^27 = 1 hundredth banano") }; { print $0 }' bandaid_build/nano/lib/numbers.hpp > bandaid_build/nano/lib/numbers.hpp.awk
 mv bandaid_build/nano/lib/numbers.hpp.awk bandaid_build/nano/lib/numbers.hpp;
 
-awk  'NR==15 { sub("nano::uint128_t \\(\"1000000000000000000000000\"\\); // 10\\^24", "nano::uint128_t (\"1\"); // 10^0") }; { print $0 }' bandaid_build/nano/lib/numbers.hpp > bandaid_build/nano/lib/numbers.hpp.awk
+awk  'NR==17 { sub("nano::uint128_t \\(\"1000000000000000000000000\"\\); // 10\\^24", "nano::uint128_t (\"1\"); // 10^0") }; { print $0 }' bandaid_build/nano/lib/numbers.hpp > bandaid_build/nano/lib/numbers.hpp.awk
 mv bandaid_build/nano/lib/numbers.hpp.awk bandaid_build/nano/lib/numbers.hpp;
 
 
@@ -452,7 +453,7 @@ awk  'NR==156 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_build/nan
 mv bandaid_build/nano/lib/rpcconfig.cpp.awk bandaid_build/nano/lib/rpcconfig.cpp;
 
 #nano/nano_node/CMakeLists.txt
-awk  'NR==1 || NR==4 || NR==13 || NR==17 || NR==21 || NR==25 || NR==27 || NR==29 || NR==34 || NR==36 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/nano/nano_node/CMakeLists.txt > bandaid_build/nano/nano_node/CMakeLists.txt.awk
+awk  'NR==1 || NR==4 || NR==14 || NR==18 || NR==22 || NR==24 || NR==26 || NR==31 || NR==33 || NR==36 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/nano/nano_node/CMakeLists.txt > bandaid_build/nano/nano_node/CMakeLists.txt.awk
 mv bandaid_build/nano/nano_node/CMakeLists.txt.awk bandaid_build/nano/nano_node/CMakeLists.txt;
 
 awk  'NR==18 { sub(" -DGIT_COMMIT_HASH", "-DGIT_COMMIT_HASH") }; { print $0 }' bandaid_build/nano/nano_node/CMakeLists.txt > bandaid_build/nano/nano_node/CMakeLists.txt.awk
@@ -497,19 +498,19 @@ awk  'NR==309 || NR==328 { sub("ec.message ()", "ec.message () % connection->soc
 mv bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp;
 
 #nano/node/cli.cpp
-awk 'NR==84 { print "\t(\"timestamps_import\", \"Imports a CSV file, overwriting the timestamps recorded in the database (warning: high resource usage).\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk
+awk 'NR==74 { print "\t(\"timestamps_import\", \"Imports a CSV file, overwriting the timestamps recorded in the database (warning: high resource usage).\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk
 mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
 
-awk 'NR==85 { print "\t(\"timestamps_export\", \"Writes a CSV file with the local timestamp recorded for each hash with timestamp in the database.\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
+awk 'NR==75 { print "\t(\"timestamps_export\", \"Writes a CSV file with the local timestamp recorded for each hash with timestamp in the database.\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
 mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
 
-awk 'NR==86 { print "\t(\"timestamps_update_frontiers\", \"Updates the \047modified\047 timestamp of each account chain with the stamps of each frontier\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
+awk 'NR==76 { print "\t(\"timestamps_update_frontiers\", \"Updates the \047modified\047 timestamp of each account chain with the stamps of each frontier\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
 mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
 
   # copy lines from bandaid_build, (nano with edits)
-sed -n '1,9p' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.sed;
-echo '#include <boost/lexical_cast.hpp>' >> bandaid_build/nano/node/cli.cpp.sed;
-sed -n '10,77p' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+# sed -n '1,9p' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.sed;
+# echo '#include <boost/lexical_cast.hpp>' >> bandaid_build/nano/node/cli.cpp.sed;
+# sed -n '10,77p' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 
   # copy lines from bandaid_build, (nano with edits)
 sed -n '78,90p' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
