@@ -10,7 +10,7 @@ reset;
 
 check_type=BananoCoin_v25_vs_nanocurrency_v25
 # check_type=BananoCoin_master_vs_nanocurrency_v24
-# check_type="local"
+check_type="local"
 
 if [ $check_type = "BananoCoin_v25_vs_nanocurrency_v25" ]
 then
@@ -330,8 +330,8 @@ awk  'NR==13 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/ipc_fla
 mv bandaid_build/nano/ipc_flatbuffers_lib/flatbuffer_producer.hpp.awk bandaid_build/nano/ipc_flatbuffers_lib/flatbuffer_producer.hpp;
 
 #nano/lib/CMakeLists.txt
-# awk 'NR==33 { print "  convert.cpp\n  convert.hpp" }; { print $0 }' bandaid_build/nano/lib/CMakeLists.txt > bandaid_build/nano/lib/CMakeLists.txt.awk
-# mv bandaid_build/nano/lib/CMakeLists.txt.awk bandaid_build/nano/lib/CMakeLists.txt;
+awk 'NR==33 { print "  convert.cpp\n  convert.hpp" }; { print $0 }' bandaid_build/nano/lib/CMakeLists.txt > bandaid_build/nano/lib/CMakeLists.txt.awk
+mv bandaid_build/nano/lib/CMakeLists.txt.awk bandaid_build/nano/lib/CMakeLists.txt;
 
 #nano/lib/blocks.cpp
 awk 'NR==3 { print "#include <nano/lib/convert.hpp>" }; { print $0 }' bandaid_build/nano/lib/blocks.cpp > bandaid_build/nano/lib/blocks.cpp.awk
@@ -467,7 +467,16 @@ awk  'NR==116 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/nano_n
 mv bandaid_build/nano/nano_node/daemon.cpp.awk bandaid_build/nano/nano_node/daemon.cpp;
 
 #nano/nano_node/entry.cpp
-awk  'NR==165 { sub("nano_dev_network", "banano_dev_network") }; { print $0 }' bandaid_build/nano/nano_node/entry.cpp > bandaid_build/nano/nano_node/entry.cpp.awk
+awk  'NR==84 { sub("nano_dev_network", "banano_dev_network") }; { print $0 }' bandaid_build/nano/nano_node/entry.cpp > bandaid_build/nano/nano_node/entry.cpp.awk
+mv bandaid_build/nano/nano_node/entry.cpp.awk bandaid_build/nano/nano_node/entry.cpp;
+
+awk  'NR==85 { sub("nano_dev_network", "banano_dev_network") }; { print $0 }' bandaid_build/nano/nano_node/entry.cpp > bandaid_build/nano/nano_node/entry.cpp.awk
+mv bandaid_build/nano/nano_node/entry.cpp.awk bandaid_build/nano/nano_node/entry.cpp;
+
+awk  'NR==86 { sub("nano_dev_network", "banano_dev_network") }; { print $0 }' bandaid_build/nano/nano_node/entry.cpp > bandaid_build/nano/nano_node/entry.cpp.awk
+mv bandaid_build/nano/nano_node/entry.cpp.awk bandaid_build/nano/nano_node/entry.cpp;
+
+awk  'NR==152 { sub("nano_dev_network", "banano_dev_network") }; { print $0 }' bandaid_build/nano/nano_node/entry.cpp > bandaid_build/nano/nano_node/entry.cpp.awk
 mv bandaid_build/nano/nano_node/entry.cpp.awk bandaid_build/nano/nano_node/entry.cpp;
 
 awk  'NR==1915 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/nano_node/entry.cpp > bandaid_build/nano/nano_node/entry.cpp.awk
@@ -802,7 +811,7 @@ awk  'NR==5554 { print "\tno_arg_funcs.emplace (\"raw_to_dec\", &nano::json_hand
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
 #nano/node/network.cpp
-awk  'NR==1088 || NR==1090 || NR==1092 || NR==1094 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/node/network.cpp > bandaid_build/nano/node/network.cpp.awk
+awk  'NR==1016 || NR==1018 || NR==1020 || NR==1022 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/node/network.cpp > bandaid_build/nano/node/network.cpp.awk
 mv bandaid_build/nano/node/network.cpp.awk bandaid_build/nano/node/network.cpp;
 
 #nano/node/logging.cpp
@@ -955,10 +964,10 @@ mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp
 awk  'NR==80 { sub("nano_1gxf7jcnomi7yqkkjyxwwygo5sckrohtgsgezp6u74g6ifgydw4cajwbk8bf", "ban_3finchb9x33ype7r7495hoh9rs46hyb17sebogh7ghf6ar8zheiucm87mfha") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
-awk  'NR==84 || NR==89 || NR==90 || NR==114 || NR==115 || NR==123 || NR==124 || NR==130 || NR==148 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
+awk  'NR==83 || NR==88 || NR==89 || NR==113 || NR==114 || NR==122 || NR==123 || NR==129 || NR==147 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
-awk  'NR==89 || NR==114 || NR==123 || NR==130 || NR==131 || NR==148 || NR==149 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
+awk  'NR==88 || NR==113 || NR==122 || NR==129 || NR==130 || NR==147 || NR==148 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
 awk  'NR==90 || NR==115 || NR==124 || NR==131 || NR==149 { sub("\\? nano", "  ? nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
