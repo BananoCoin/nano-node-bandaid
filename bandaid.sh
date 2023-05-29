@@ -10,7 +10,7 @@ reset;
 
 check_type=BananoCoin_v25_vs_nanocurrency_v25
 # check_type=BananoCoin_master_vs_nanocurrency_v24
-check_type="local"
+# check_type="local"
 
 if [ $check_type = "BananoCoin_v25_vs_nanocurrency_v25" ]
 then
@@ -970,22 +970,22 @@ mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp
 awk  'NR==88 || NR==113 || NR==122 || NR==129 || NR==130 || NR==147 || NR==148 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
-awk  'NR==90 || NR==115 || NR==124 || NR==131 || NR==149 { sub("\\? nano", "  ? nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
+awk  'NR==89 || NR==114 || NR==123 || NR==130 || NR==148 { sub("\\? nano", "  ? nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
-awk  'NR==91 { sub(": nano", "\t: nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
+awk  'NR==90 { sub(": nano", "\t: nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
-awk  'NR==116 { sub("   : nano", "\t   : nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
+awk  'NR==115 { sub("   : nano", "\t   : nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
-awk  'NR==125 { sub("\t : nano", "\t\t : nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
+awk  'NR==124 { sub("\t : nano", "\t\t : nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
-awk  'NR==132 { sub("\t   : nano", "\t\t   : nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
+awk  'NR==131 { sub("\t   : nano", "\t\t   : nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
-awk  'NR==150 { sub("\t  : nano", "\t\t  : nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
+awk  'NR==149 { sub("\t  : nano", "\t\t  : nano") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
 awk  'NR==94 { sub("\047R\047, \047A\047", "\047B\047, \047Z\047") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
@@ -997,7 +997,7 @@ mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp
 awk  'NR==94 { sub("\047R\047, \047C\047", "\047B\047, \047X\047") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
-awk  'NR==146 { sub("nano_3qb6o6i1tkzr6jwr5s7eehfxwg9x6eemitdinbpi7u8bjjwsgqfj4wzser3x", "bano_3qb6o6i1tkzr6jwr5s7eehfxwg9x6eemitdinbpi7u8bjjwsgqfj4wzser3x") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
+awk  'NR==145 { sub("nano_3qb6o6i1tkzr6jwr5s7eehfxwg9x6eemitdinbpi7u8bjjwsgqfj4wzser3x", "bano_3qb6o6i1tkzr6jwr5s7eehfxwg9x6eemitdinbpi7u8bjjwsgqfj4wzser3x") }; { print $0 }' bandaid_build/nano/secure/common.cpp > bandaid_build/nano/secure/common.cpp.awk
 mv bandaid_build/nano/secure/common.cpp.awk bandaid_build/nano/secure/common.cpp;
 
 #nano/secure/common.hpp
