@@ -117,6 +117,9 @@ mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 awk  'NR==57 { sub("/nanocurrency", "/bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
+awk  'NR==57 { sub("nanocurrency:nanocurrency", "bananocoin:bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
 #util/changelog.py
 awk  'NR==118 { sub("incremental", "BananoCoin/banano") }; { print $0 }' bandaid_build/util/changelog.py > bandaid_build/util/changelog.py.awk
 mv bandaid_build/util/changelog.py.awk bandaid_build/util/changelog.py;
@@ -185,6 +188,10 @@ mv bandaid_build/ci/actions/linux/docker-impl/docker-common.sh.awk bandaid_build
 # ci/build-docker-image.sh
 awk  'NR==11 || NR==23 { sub("\\$\\{GITHUB_REPOSITORY\\}", "bananocoin") }; { print $0 }' bandaid_build/ci/build-docker-image.sh > bandaid_build/ci/build-docker-image.sh.awk
 mv bandaid_build/ci/build-docker-image.sh.awk bandaid_build/ci/build-docker-image.sh;
+
+# ci/build-rhel.sh
+awk  'NR==15 || NR==17 || NR==25 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/build-rhel.sh > bandaid_build/ci/build-rhel.sh.awk
+mv bandaid_build/ci/build-rhel.sh.awk bandaid_build/ci/build-rhel.sh;
 
 #ci/actions/linux/ghcr_push.sh
 awk  'NR==6 || NR==7 || NR==8 || NR==9 { sub("\\$\\{GITHUB_REPOSITORY\\}", "bananocoin") }; { print $0 }' bandaid_build/ci/actions/linux/ghcr_push.sh > bandaid_build/ci/actions/linux/ghcr_push.sh.awk
