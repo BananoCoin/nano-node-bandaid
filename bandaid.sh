@@ -81,37 +81,40 @@ awk  'NR==39 || NR==40 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_
 mv bandaid_build/.gitignore.awk bandaid_build/.gitignore;
 
 #nanocurrency.spec.in
-awk  'NR==1 || NR==13 || NR==45 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+awk  'NR==1 || NR==13 || NR==45 || NR==50 || NR==55 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
-awk  'NR==45 || NR==54 || NR==58 || NR==59 || NR==60 || NR==61 || NR==62 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+awk  'NR==41 || NR==54 || NR==55 || NR==56 || NR==58 || NR==59 || NR==60 || NR==61 || NR==62 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
-awk  'NR==59 || NR==60 || NR==61 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+awk  'NR==41 || NR==56 || NR==59 || NR==60 || NR==61 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
-awk  'NR==60 || NR==61 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+awk  'NR==60 || NR==61 || NR==56 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
-awk  'NR==60 || NR==66 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+awk  'NR==60 || NR==66 || NR==56 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
 awk  'NR==4 || NR==58 || NR==60 || NR==61 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
-awk  'NR==13 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+awk  'NR==13 || NR==54 || NR==56 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
-awk  'NR==36 || NR==43 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+awk  'NR==32 || NR==39 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
-awk  'NR==43 || NR==52 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+awk  'NR==39 || NR==48 { sub("nano_node", "bananode") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
-awk  'NR==37 || NR==44 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+awk  'NR==33 || NR==40 { sub("nano_rpc", "banano_rpc") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
-awk  'NR==44 || NR==53 { sub("/nano_rpc", "/banano_rpc") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+awk  'NR==40 || NR==49 { sub("/nano_rpc", "/banano_rpc") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
+mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
+
+awk  'NR==57 { sub("/nanocurrency", "/bananocoin") }; { print $0 }' bandaid_build/nanocurrency.spec.in > bandaid_build/nanocurrency.spec.in.awk
 mv bandaid_build/nanocurrency.spec.in.awk bandaid_build/nanocurrency.spec.in;
 
 #util/changelog.py
