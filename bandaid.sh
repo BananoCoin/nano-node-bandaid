@@ -8,18 +8,18 @@ reset;
 # https://github.com/nanocurrency/nano-node/compare/V22.1...BananoCoin:V22dev2
 # https://github.com/BananoCoin/banano/compare/v25...nanocurrency:V25.0
 
-check_type=BananoCoin_v25_vs_nanocurrency_v25
+check_type=BananoCoin_v25_1_vs_nanocurrency_v25_1
 # check_type=BananoCoin_master_vs_nanocurrency_v24
 # check_type="local"
 
-if [ $check_type = "BananoCoin_v25_vs_nanocurrency_v25" ]
+if [ $check_type = "BananoCoin_v25_1_vs_nanocurrency_v25_1" ]
 then
-  echo "comparing BananoCoin v25 vs nanocurrency releases/v25"
+  echo "comparing BananoCoin v25 vs nanocurrency releases/V25.1"
   # --depth 1 means clone with no history.
   rm -rf banano_build;
   rm -rf nano_build;
-  git clone -c advice.detachedHead=false --depth 1 --branch v25 https://github.com/BananoCoin/banano.git banano_build;
-  git clone -c advice.detachedHead=false --depth 1 --branch V25.0 https://github.com/nanocurrency/nano-node.git nano_build;
+  git clone -c advice.detachedHead=false --depth 1 --branch v25.1 https://github.com/BananoCoin/banano.git banano_build;
+  git clone -c advice.detachedHead=false --depth 1 --branch V25.1 https://github.com/nanocurrency/nano-node.git nano_build;
 elif [ $check_type = "BananoCoin_master_vs_nanocurrency_v24" ]
 then
   echo "comparing BananoCoin master vs nanocurrency releases/v24"
@@ -193,10 +193,6 @@ mv bandaid_build/ci/actions/deploy.sh.awk bandaid_build/ci/actions/deploy.sh;
 
 awk  'NR==17 { sub("nano-node", "bananode") }; { print $0 }' bandaid_build/ci/actions/deploy.sh > bandaid_build/ci/actions/deploy.sh.awk
 mv bandaid_build/ci/actions/deploy.sh.awk bandaid_build/ci/actions/deploy.sh;
-
-#ci/build-centos.sh
-awk  'NR==15 || NR==17 || NR==22 { sub("nanocurrency", "bananocoin") }; { print $0 }' bandaid_build/ci/build-centos.sh > bandaid_build/ci/build-centos.sh.awk
-mv bandaid_build/ci/build-centos.sh.awk bandaid_build/ci/build-centos.sh;
 
 #ci/record_rep_weights.py
 awk  'NR==56 { sub("nano_", "ban_") }; { print $0 }' bandaid_build/ci/record_rep_weights.py > bandaid_build/ci/record_rep_weights.py.awk
