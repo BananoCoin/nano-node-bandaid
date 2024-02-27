@@ -1,5 +1,4 @@
 nano/core_test/node.cpp
-nano/core_test/prioritization.cpp
 nano/core_test/uint256_union.cpp
 nano/core_test/uint256_union.cpp
 nano/nano_node/entry.cpp

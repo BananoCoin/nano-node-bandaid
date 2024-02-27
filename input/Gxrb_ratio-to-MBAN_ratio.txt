@@ -7,7 +7,6 @@ nano/core_test/confirmation_height.cpp
 nano/core_test/election_scheduler.cpp
 nano/core_test/frontiers_confirmation.cpp
 nano/core_test/ledger.cpp
-nano/core_test/prioritization.cpp
 nano/core_test/request_aggregator.cpp
 nano/core_test/system.cpp
 nano/core_test/uint256_union.cpp
