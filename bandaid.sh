@@ -507,6 +507,12 @@ awk  'NR==309 || NR==328 { sub("ec.message ()", "ec.message () % connection->soc
 mv bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp.awk bandaid_build/nano/node/bootstrap/bootstrap_frontier.cpp;
 
 #nano/node/cli.cpp
+sed -n '1,7p' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.sed;
+# echo '// INSERT HERE' >> bandaid_build/nano/node/cli.cpp.sed
+sed -n '8,8p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+sed '1,8d' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+mv bandaid_build/nano/node/cli.cpp.sed bandaid_build/nano/node/cli.cpp;
+
 awk 'NR==74 { print "\t(\"timestamps_import\", \"Imports a CSV file, overwriting the timestamps recorded in the database (warning: high resource usage).\")" }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk
 mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
 
@@ -526,22 +532,22 @@ sed -n '86,89p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cp
 sed -n '87,103p' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 
   # copy lines from banano_build, (banano with no edits)
-sed -n '107,109p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+# sed -n '107,109p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 
   # copy lines from bandaid_build, (nano with edits)
-sed -n '104,1303p' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+sed -n '104,1297p' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 
   # copy lines from banano_build, (banano with no edits)
-sed -n '1310,1558p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+sed -n '1301,1558p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 
   #copy to the end, delete the top lines.
-sed '1,1537d' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
+# sed '1,1537d' bandaid_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 
 sed -n '1559,1599p' banano_build/nano/node/cli.cpp >> bandaid_build/nano/node/cli.cpp.sed;
 
 mv bandaid_build/nano/node/cli.cpp.sed bandaid_build/nano/node/cli.cpp;
 
-awk  'NR==701 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
+awk  'NR==693 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/node/cli.cpp > bandaid_build/nano/node/cli.cpp.awk;
 mv bandaid_build/nano/node/cli.cpp.awk bandaid_build/nano/node/cli.cpp;
 
 #nano/node/election.cpp
@@ -805,7 +811,7 @@ awk  'NR==5553 { print "\tno_arg_funcs.emplace (\"raw_to_dec\", &nano::json_hand
 mv bandaid_build/nano/node/json_handler.cpp.awk bandaid_build/nano/node/json_handler.cpp;
 
 #nano/node/network.cpp
-awk  'NR==1016 || NR==1018 || NR==1020 || NR==1022 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/node/network.cpp > bandaid_build/nano/node/network.cpp.awk
+awk  'NR==1006 || NR==1008 || NR==1010 || NR==1012 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/node/network.cpp > bandaid_build/nano/node/network.cpp.awk
 mv bandaid_build/nano/node/network.cpp.awk bandaid_build/nano/node/network.cpp;
 
 #nano/node/logging.cpp
@@ -825,17 +831,17 @@ mv bandaid_build/nano/node/node.cpp.awk bandaid_build/nano/node/node.cpp;
 awk  'NR==13 { print "#include <nano/test_common/system.hpp>" }; { print $0 }' bandaid_build/nano/node/node.cpp > bandaid_build/nano/node/node.cpp.awk
 mv bandaid_build/nano/node/node.cpp.awk bandaid_build/nano/node/node.cpp;
 
-awk  'NR==268 { print "\t\t\t\t\t\tevent.add (\"amount_decimal\", convert_raw_to_dec (amount_a.to_string_dec ()));" }; { print $0 }' bandaid_build/nano/node/node.cpp > bandaid_build/nano/node/node.cpp.awk
+awk  'NR==258 { print "\t\t\t\t\t\tevent.add (\"amount_decimal\", convert_raw_to_dec (amount_a.to_string_dec ()));" }; { print $0 }' bandaid_build/nano/node/node.cpp > bandaid_build/nano/node/node.cpp.awk
 mv bandaid_build/nano/node/node.cpp.awk bandaid_build/nano/node/node.cpp;
 
 awk  'NR==399 { sub("XRB", "BAN") }; { print $0 }' bandaid_build/nano/node/node.cpp > bandaid_build/nano/node/node.cpp.awk
 mv bandaid_build/nano/node/node.cpp.awk bandaid_build/nano/node/node.cpp;
 
 #nano/qt/qt.cpp
-awk  'NR==62 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/qt/qt.cpp > bandaid_build/nano/qt/qt.cpp.awk
+awk  'NR==61 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/qt/qt.cpp > bandaid_build/nano/qt/qt.cpp.awk
 mv bandaid_build/nano/qt/qt.cpp.awk bandaid_build/nano/qt/qt.cpp;
 
-awk  'NR==1835 || NR==1009 { sub("Mxrb_ratio", "BAN_ratio") }; { print $0 }' bandaid_build/nano/qt/qt.cpp > bandaid_build/nano/qt/qt.cpp.awk
+awk  'NR==1834 || NR==1008 { sub("Mxrb_ratio", "BAN_ratio") }; { print $0 }' bandaid_build/nano/qt/qt.cpp > bandaid_build/nano/qt/qt.cpp.awk
 mv bandaid_build/nano/qt/qt.cpp.awk bandaid_build/nano/qt/qt.cpp;
 
 #nano/rpc/CMakeLists.txt
@@ -867,10 +873,10 @@ mv bandaid_build/nano/node/nodeconfig.cpp.awk bandaid_build/nano/node/nodeconfig
 awk  'NR==19 { sub("peering-beta.nano.org", "livenet-beta.banano.cc") }; { print $0 }' bandaid_build/nano/node/nodeconfig.cpp > bandaid_build/nano/node/nodeconfig.cpp.awk
 mv bandaid_build/nano/node/nodeconfig.cpp.awk bandaid_build/nano/node/nodeconfig.cpp;
 
-awk  'NR==49 || NR==53 || NR==61 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/node/nodeconfig.cpp > bandaid_build/nano/node/nodeconfig.cpp.awk
+awk  'NR==50 || NR==54 || NR==62 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/node/nodeconfig.cpp > bandaid_build/nano/node/nodeconfig.cpp.awk
 mv bandaid_build/nano/node/nodeconfig.cpp.awk bandaid_build/nano/node/nodeconfig.cpp;
 
-awk  'NR==57 { sub("nano", "bano") }; { print $0 }' bandaid_build/nano/node/nodeconfig.cpp > bandaid_build/nano/node/nodeconfig.cpp.awk
+awk  'NR==58 { sub("nano", "bano") }; { print $0 }' bandaid_build/nano/node/nodeconfig.cpp > bandaid_build/nano/node/nodeconfig.cpp.awk
 mv bandaid_build/nano/node/nodeconfig.cpp.awk bandaid_build/nano/node/nodeconfig.cpp;
 
 sed -n '1,62p' bandaid_build/nano/node/nodeconfig.cpp > bandaid_build/nano/node/nodeconfig.cpp.sed;
@@ -879,7 +885,7 @@ sed -n '63,72p' banano_build/nano/node/nodeconfig.cpp >> bandaid_build/nano/node
 sed '1,71d' bandaid_build/nano/node/nodeconfig.cpp >> bandaid_build/nano/node/nodeconfig.cpp.sed;
 mv bandaid_build/nano/node/nodeconfig.cpp.sed bandaid_build/nano/node/nodeconfig.cpp;
 
-awk  'NR==73 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/node/nodeconfig.cpp > bandaid_build/nano/node/nodeconfig.cpp.awk
+awk  'NR==74 { sub(":nano", ":banano") }; { print $0 }' bandaid_build/nano/node/nodeconfig.cpp > bandaid_build/nano/node/nodeconfig.cpp.awk
 mv bandaid_build/nano/node/nodeconfig.cpp.awk bandaid_build/nano/node/nodeconfig.cpp;
 
 #nano/node/nodeconfig.hpp
