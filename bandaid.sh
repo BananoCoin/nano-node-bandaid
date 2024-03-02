@@ -287,6 +287,9 @@ awk  'NR==75 { sub("0x52", "0x42") }; { print $0 }' bandaid_build/nano/core_test
 mv bandaid_build/nano/core_test/message.cpp.awk bandaid_build/nano/core_test/message.cpp;
 
 #nano/core_test/toml.cpp
+awk  'NR==380 || NR=384 { sub("7075", "7071") }; { print $0 }' bandaid_build/nano/core_test/toml.cpp > bandaid_build/nano/core_test/toml.cpp.awk
+mv bandaid_build/nano/core_test/toml.cpp.awk bandaid_build/nano/core_test/toml.cpp;
+
 awk  'NR==421 { sub("nano_3arg3asgtigae3xckabaaewkx3bzsh7nwz7jkmjos79ihyaxwphhm6qgjps4", "bano_3arg3asgtigae3xckabaaewkx3bzsh7nwz7jkmjos79ihyaxwphhm6qgjps4") }; { print $0 }' bandaid_build/nano/core_test/toml.cpp > bandaid_build/nano/core_test/toml.cpp.awk
 mv bandaid_build/nano/core_test/toml.cpp.awk bandaid_build/nano/core_test/toml.cpp;
 
@@ -839,6 +842,9 @@ mv bandaid_build/nano/node/node.cpp.awk bandaid_build/nano/node/node.cpp;
 
 #nano/qt/qt.cpp
 awk  'NR==61 { sub("Nano", "Banano") }; { print $0 }' bandaid_build/nano/qt/qt.cpp > bandaid_build/nano/qt/qt.cpp.awk
+mv bandaid_build/nano/qt/qt.cpp.awk bandaid_build/nano/qt/qt.cpp;
+
+awk  'NR==1765 { sub("7075", "7071") }; { print $0 }' bandaid_build/nano/qt/qt.cpp > bandaid_build/nano/qt/qt.cpp.awk
 mv bandaid_build/nano/qt/qt.cpp.awk bandaid_build/nano/qt/qt.cpp;
 
 awk  'NR==1834 || NR==1008 { sub("Mxrb_ratio", "BAN_ratio") }; { print $0 }' bandaid_build/nano/qt/qt.cpp > bandaid_build/nano/qt/qt.cpp.awk
